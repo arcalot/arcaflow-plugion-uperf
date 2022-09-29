@@ -1,0 +1,22 @@
+name: Carpentry
+on:
+  push:
+    branches:
+      - add-gha
+  pull_request:
+env:
+  IMAGE_NAME: arcaflow-plugin-uperf
+  IMAGE_TAG: '0.1.0'
+  GITHUB_USERNAME: ${{ github.actor }}
+  GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+jobs:
+  carpenter-build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: carpenter build
+        uses: mfleader/arcaflow-plugin-image-builder@gh-container-axn
+        with:
+          args: build --build --push

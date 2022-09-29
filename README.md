@@ -1,72 +1,87 @@
-# Official plugins repository for Arcaflow
+# arca-uperf
 
-This is the repository for the official Arcaflow plugins. They are all tested and containerized.
+This plugin handles all components of uperf to run the given benchmark profile.
 
-## Contributing a plugin
+### Operation
 
-In order to contribute a plugin, please fork the repository and add your plugin to either the [go](go) or the [python](python) folder. We currently only support these two languages for official plugins.
+This plugin contains two parts: the server and the client. Both need to be running for uperf to run benchmarks.
 
-## Requirements for plugins
+To start the server, specify how long to run it for. It should be at least 5 seconds longer than the client is run.
 
-### Basic requirements:
+```
+# yaml-language-server:$schema=uperf_server.input.schema.json
 
-- Your plugin MUST include a `README.md` file that explains the basic function of how to use the plugin as a standalone script and the functions it uses.
-- You MUST have tests, they MUST run in a network-disconnected environment, and they MUST run from the Dockerfile.
-- Your code MUST use the official Arcaflow plugin SDKs.
-- All schema fields MUST have a [name and a description](https://arcalot.github.io/arcaflow/creating-plugins/python/#metadata).
+run_duration: 15
+```
 
-### License requirements
+To start the client, a profile must be defined in the input.
 
-- The code committed to this repository MUST be licensed under the Apache 2.0 license.
-- You MUST NOT copy code from other projects, even if they are Apache 2.0 licensed, as there may be requirements to keep copyright notices. Include other projects as dependencies instead.
-- You MAY include dependencies (code or runtime) under the following licenses:
-  - Apache License 2.0
-  - BSD (0-clause, 2-clause or 3-clause)
-  - EPL 2.0
-  - GPLv2 or later
-  - LGPLv2 or later
-  - MIT, MIT-0
-  - CC0
-  - Unlicense
-- Any copyright notices MUST read "Arcalot contributors".
-- Your plugin code MUST NOT include copyright or license headers in each file.
+If using arcaflow to orchistrate uperf, it is recommended that you don't over-complicate the profiles and instead break them down into the tests you want to do, then have arcaflow run them.
 
-### Container requirements
+A a profile is comprised of groups, which are comprised of transactions, which are comprised of flowops.
 
-- Your plugin must contain a `Dockerfile` that is based on CentOS Stream 8 (`quay.io/centos/centos:stream8`).
-- Your `Dockerfile` must install all utilities that are required to run your plugin, and your image must work in a network-disconnected environment.
-- Your `Dockerfile` must use [multiple build stages](https://docs.docker.com/develop/develop-images/multistage-build/) if interim utilities such as `git` are needed to enable your plugin workload.
-- The [LICENSE file from arcaflow-plugins](https://github.com/arcalot/arcaflow-plugins/blob/main/LICENSE) must be included in the container image next to your runnable plugin.
-- Your `ENTRYPOINT` MUST point to your plugin with the full path in the JSON-array-form (array), while the default `CMD` should be empty. See [the Dockerfile documentation](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact) for details.
-- Unless your plugin runs in privileged mode (see labels below), your Dockerfile must switch to the user ID and group ID of `1000`.
+For more information, see [uperf's documentation](https://uperf.org/manual.html) and the fully-documented schema for this plugin. All options that uperf profiles support are included in the schema. If you include the schema header in your yaml files and your editor has a compatible yaml extension, you will get suggestions and documentation provided while editing your yaml file.
 
-### Container labels
+Example
+```
+# yaml-language-server:$schema=uperf.input.schema.json
 
-You must add the following labels to your container:
+name: "netperf"
+groups:
+  - nthreads: 1
+    transactions:
+      - iterations: 1
+        flowops:
+          - type: "accept"
+            remotehost: "server"
+            protocol: "tcp"
+            wndsz: 50
+            tcp_nodelay: true
+      - duration: "10s"
+        flowops:
+          - type: "write"
+            size: 90
+          - type: "read"
+            size: 90
+      - iterations: 1
+        flowops:
+          - type: "disconnect"
+```
 
-|Label|Description|
-|-----|-----------|
-|`org.opencontainers.image.source`|a link to the target directory in the main branch of this repository|
-|`org.opencontainers.image.licenses`|a valid [SPDX license expression](https://spdx.dev/spdx-specification-21-web-version/#h.jxpfx0ykyb60) describing the licenses of the components in the image. (e.g. `Apache-2.0` AND `GPL-2.0`)|
-|`org.opencontainers.image.vendor`|must be `Arcalot project`|
-|`org.opencontainers.image.authors`|must be `Arcalot contributors`|
-|`org.opencontainers.image.title`|a human-readable name for the plugin|
-|`io.github.arcalot.arcaflow.plugin.version`|must be `1`|
-|`io.github.arcalot.arcaflow.plugin.privileged`|can be set to `0` if your plugin can only run unprivileged, or `1` if your plugin can only run privileged. Default to both execution modes. The plugin must still be able to start unprivileged and provide a schema even if it normally runs privileged|
-|`io.github.arcalot.arcaflow.plugin.hostnetwork`|can be set to `0` if your plugin can only run on the container network, or `1` if it can only run on the host network. Default to both execution modes|
+### Running
 
-### Requirements for Go plugins
+First, create the yaml files for the client and server inputs. You will pass these into the steps. In the examples below, I use the provided inputs from the input folder.
 
-- You must use the standard Go tooling and add the `go.mod` and `go.sum` files.
-- Your code must be gofmt'd.
-- Tests must be runnable using `go test ./...` and report the output in the standard Go test output format.
-- Running `go generate ./...` must not produce changes in the git tree. (`git diff` should be empty after running `go generate`.)
-- Your code must pass the [golangci-lint vetting](go/.golangci.yml).
-- Add all `LICENSE` and `NOTICE` files for any dependencies to your container image.
+#### Without containers
 
-### Requirements for Python plugins
+First, create a virtual environment and install the items in the requirements.txt
+```
+python -m venv test
+source test/bin/activate
+pip install -r requirements.txt
+```
 
-- Your code must be runnable with Python 3.10.
-- Your project must include a `requirements.txt` or a `pyproject.toml` with all relevant dependencies declared.
-- All tests must be included in files called `test_*.py`. These files must be directly runnable and exit with a non-zero exit code if the tests failed.
-- Your code must be formatted according to [PEP-8](https://peps.python.org/pep-0008/). Use [autopep8](https://pypi.org/project/autopep8/) if your IDE does not support formatting.
+Update the input/netperf.yaml.
+```
+remotehost: 127.0.0.1
+```
+
+In separate shells on the same or separate machines, you need to run both steps.
+
+The server:
+```
+python uperf_plugin.py -s uperf_server --file input/server_input.yaml
+```
+
+And the client:
+```
+python uperf_plugin.py -s uperf --file input/netperf.yaml
+```
+
+#### With docker-compose or podman-compose
+
+First, build the containers with `docker-compose build` or `podman-compose build`
+
+Next, start the containers with `docker-compose up` or `podman-compose up`
+
+Lastly, when it's complete, clean up with `docker-compose down` or `podman-compose down`
