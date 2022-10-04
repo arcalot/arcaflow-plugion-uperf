@@ -85,3 +85,10 @@ First, build the containers with `docker-compose build` or `podman-compose build
 Next, start the containers with `docker-compose up` or `podman-compose up`
 
 Lastly, when it's complete, clean up with `docker-compose down` or `podman-compose down`
+
+## Image Building
+
+You can change this plugin's image version tag in
+`.github/workflows/carpenter.yaml` by editing the
+`IMAGE_TAG` variable, and pushing that change to the
+branch designated in that workflow.
