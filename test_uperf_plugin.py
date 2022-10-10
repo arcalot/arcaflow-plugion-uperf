@@ -45,7 +45,7 @@ sample_profile_expected = """<?xml version='1.0' encoding='us-ascii'?>
 <profile name="test">
   <group nthreads="1">
     <transaction iterations="1">
-      <flowop type="accept" options="remotehost=127.0.0.1 protocol=tcp tcp_nodelay wndsz=5k" />
+      <flowop type="accept" options="remotehost=127.0.0.1 port=20000 protocol=tcp tcp_nodelay wndsz=5k" />
     </transaction>
     <transaction duration="50ms">
       <flowop type="write" options="size=90k" />
