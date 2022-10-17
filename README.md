@@ -1,4 +1,4 @@
-# arca-uperf
+# Arcaflow Plugin Uperf
 
 This plugin handles all components of uperf to run the given benchmark profile.
 
