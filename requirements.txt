@@ -1,4 +1,4 @@
-arcaflow-plugin-sdk==0.9.0; python_version >= "3.9"
+git+https://github.com/arcalot/arcaflow-plugin-sdk-python.git@allow-scope-in-one-of
 attrs==22.1.0; python_full_version >= "3.7.1" and python_version >= "3.9"
 automat==20.2.0; python_full_version >= "3.7.1" and python_version >= "3.9"
 cbor2==5.4.3; python_version >= "3.9"
