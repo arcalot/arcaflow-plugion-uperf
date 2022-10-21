@@ -1,20 +1,22 @@
 FROM quay.io/centos/centos:stream8 AS builder
-RUN dnf install -y git make gcc lksctp-tools-devel automake
+RUN dnf install --setopt=tsflags=nodocs -y git make gcc lksctp-tools-devel automake && dnf clean all
 RUN git clone -b 1.0.7 https://github.com/uperf/uperf.git /uperf
 RUN cd /uperf && ./configure && make && make install
 
 FROM quay.io/centos/centos:stream8
-RUN dnf module -y install python39 && dnf install -y python39 python39-pip lksctp-tools-devel
+RUN dnf module -y install python39 && dnf install --setopt=tsflags=nodocs -y python39 python39-pip lksctp-tools-devel && dnf clean all
 COPY --from=builder /usr/local/bin/uperf /usr/local/bin/uperf
 RUN mkdir /plugin
-ADD https://raw.githubusercontent.com/arcalot/arcaflow-plugins/main/LICENSE /plugin
-ADD uperf_plugin.py /plugin
-ADD uperf_schema.py /plugin
-ADD test_uperf_plugin.py /plugin
-ADD requirements.txt /plugin
+ADD https://raw.githubusercontent.com/arcalot/arcaflow-plugins/main/LICENSE /plugin/
+ADD uperf_plugin.py /plugin/
+ADD uperf_schema.py /plugin/
+ADD test_uperf_plugin.py /plugin/
+ADD poetry.lock pyproject.toml /plugin/
 WORKDIR /plugin
 
-RUN pip3 install -r requirements.txt
+RUN pip3 install poetry
+RUN poetry config virtualenvs.create false
+RUN poetry install --without dev
 RUN python3.9 test_uperf_plugin.py
 
 EXPOSE 20000
