@@ -8,7 +8,7 @@ This plugin contains two parts: the server and the client. Both need to be runni
 
 To start the server, specify how long to run it for. It should be at least 5 seconds longer than the client is run.
 
-```
+```yaml
 # yaml-language-server:$schema=uperf_server.input.schema.json
 
 run_duration: 15
@@ -20,10 +20,13 @@ If using arcaflow to orchistrate uperf, it is recommended that you don't over-co
 
 A a profile is comprised of groups, which are comprised of transactions, which are comprised of flowops.
 
-For more information, see [uperf's documentation](https://uperf.org/manual.html) and the fully-documented schema for this plugin. All options that uperf profiles support are included in the schema. If you include the schema header in your yaml files and your editor has a compatible yaml extension, you will get suggestions and documentation provided while editing your yaml file.
+For more information, see [uperf's documentation](https://uperf.org/manual.html) and the fully-documented schema for this plugin.
+All options that uperf profiles support are included in the schema. If you include the schema header in your yaml files and your editor has a compatible yaml extension,
+you will get suggestions and documentation provided while editing your yaml file.
 
-Example
-```
+Example:
+
+```yaml
 # yaml-language-server:$schema=uperf.input.schema.json
 
 name: "netperf"
@@ -55,27 +58,28 @@ First, create the yaml files for the client and server inputs. You will pass the
 #### Without containers
 
 First, create a virtual environment and install the items in the requirements.txt
-```
-python -m venv test
-source test/bin/activate
-pip install -r requirements.txt
+```console
+$ python -m venv .venv
+$ source .venv/bin/activate
+$ pip install poetry
+$ poetry install
 ```
 
-Update the input/netperf.yaml.
-```
+Update the `input/netperf.yaml`:
+```yaml
 remotehost: 127.0.0.1
 ```
 
 In separate shells on the same or separate machines, you need to run both steps.
 
 The server:
-```
-python uperf_plugin.py -s uperf_server --file input/server_input.yaml
+```console
+$ python uperf_plugin.py -s uperf_server --file input/server_input.yaml
 ```
 
 And the client:
-```
-python uperf_plugin.py -s uperf --file input/netperf.yaml
+```console
+$ python uperf_plugin.py -s uperf --file input/netperf.yaml
 ```
 
 #### With docker-compose or podman-compose
