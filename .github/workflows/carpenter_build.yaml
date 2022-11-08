@@ -23,7 +23,7 @@ jobs:
       - name: set_image_tag
         run: |
           export commit_hash=${{ github.sha }}
-          echo "image_tag=${{ github.head_ref }}_${commit_hash:0:7}" >> $GITHUB_ENV
+          echo "IMAGE_TAG=${{ github.head_ref }}_${commit_hash:0:7}" >> $GITHUB_ENV
       - name: show image tag
         run: echo "${{ env.image_tag }}"
       - name: set image tag in env
