@@ -2,10 +2,10 @@ name: Carpentry Push
 on:
   push:
     branches:
-      - main
+      - ${{ github.ref_name }}
 env:
   IMAGE_NAME: arcaflow-plugin-uperf
-  IMAGE_TAG: 'latest'
+  IMAGE_TAG: ${{ github.ref_name }}-${{ github.sha[:7] }}
   GITHUB_USERNAME: ${{ github.actor }}
   GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
   GITHUB_NAMESPACE: ${{ github.repository_owner }}
