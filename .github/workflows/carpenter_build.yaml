@@ -17,10 +17,12 @@ jobs:
       - name: set_image_tag
         run: |
           export commit_hash=${{ github.sha }}
-          echo "IMAGE_TAG=${{ github.head_ref }}_${commit_hash:0:7}" >> $GITHUB_ENV
-      - name: Checkout this project
-        uses: actions/checkout@v3
-      - name: carpenter build
-        uses: arcalot/arcaflow-plugin-image-builder@main
-        with:
-          args: build --build
+          echo "IMAGE_TAG=${GITHUB_REF##*/}_${commit_hash:0:7}" >> $GITHUB_ENV
+      - name: show image tag
+        run: echo $IMAGE_TAG
+      # - name: Checkout this project
+      #   uses: actions/checkout@v3
+      # - name: carpenter build
+      #   uses: arcalot/arcaflow-plugin-image-builder@main
+      #   with:
+      #     args: build --build
