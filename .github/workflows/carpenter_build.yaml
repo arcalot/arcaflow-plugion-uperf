@@ -15,17 +15,10 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
-      - name: get branch name
-        id: branch-name
-        uses: tj-actions/branch-names@v6
-      - name: Running on the default branch.
-        if: steps.branch-name.outputs.is_default == 'true'
-        run: |
-          echo "Running on default: ${{ steps.branch-name.outputs.current_branch }}"
       - name: set_image_tag
         run: |
           export commit_hash=${{ github.sha }}
-          echo "image_tag=${{ github.ref_name }}-${commit_hash:0:7}" >> $GITHUB_ENV
+          echo "image_tag=$(git rev-parse --abbrev-ref HEAD)-${commit_hash:0:7}" >> $GITHUB_ENV
       - name: show image tag
         run: echo "${{ env.image_tag }}"
       - name: show env image tag
