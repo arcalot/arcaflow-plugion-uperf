@@ -18,7 +18,7 @@ jobs:
       - name: set_image_tag
         run: |
           echo ${{ github.sha }} > $commit_hash
-          echo "${{ github.ref_name }}-${commit_hash:0:7}"" > $IMAGE_TAG
+          echo "${{ github.ref_name }}-${commit_hash:0:7}" > $IMAGE_TAG
       - name: show image tag
         run: echo $IMAGE_TAG
       - name: Checkout this project
