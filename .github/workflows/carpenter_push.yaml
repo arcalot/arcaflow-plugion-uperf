@@ -2,7 +2,7 @@ name: Carpentry Push
 on:
   push:
     branches:
-      - "*"
+      - "**"
 env:
   IMAGE_NAME: arcaflow-plugin-uperf
   GITHUB_USERNAME: ${{ github.actor }}
