@@ -2,10 +2,9 @@ name: Carpentry Push
 on:
   push:
     branches:
-      - ${{ github.ref_name }}
+      - "*"
 env:
   IMAGE_NAME: arcaflow-plugin-uperf
-  IMAGE_TAG: ${{ github.ref_name }}-${{ github.sha[:8] }}
   GITHUB_USERNAME: ${{ github.actor }}
   GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
   GITHUB_NAMESPACE: ${{ github.repository_owner }}
@@ -17,6 +16,10 @@ jobs:
     name: carpenter_push
     runs-on: ubuntu-latest
     steps:
+      - name: set_image_tag
+        run: |
+          export commit_hash=${{ github.sha }}
+          echo "IMAGE_TAG=${{ github.head_ref }}_${commit_hash:0:7}" >> $GITHUB_ENV
       - name: Checkout this project
         uses: actions/checkout@v3
       - name: carpenter build
