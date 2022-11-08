@@ -15,17 +15,22 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
+      - name: show github context
+        run: |
+          echo ${{ github.ref }}
+          echo ${{ github.head_ref }}
+          echo ${{ github.base_ref }}
       - name: set_image_tag
         run: |
           export commit_hash=${{ github.sha }}
-          echo "image_tag=$(git rev-parse --abbrev-ref HEAD)-${commit_hash:0:7}" >> $GITHUB_ENV
+          echo "image_tag=${{ github.head_ref }}-${commit_hash:0:7}" >> $GITHUB_ENV
       - name: show image tag
         run: echo "${{ env.image_tag }}"
       - name: show env image tag
         run: echo $IMAGE_TAG
-      - name: Checkout this project
-        uses: actions/checkout@v3
-      - name: carpenter build
-        uses: arcalot/arcaflow-plugin-image-builder@main
-        with:
-          args: build --build
+      # - name: Checkout this project
+      #   uses: actions/checkout@v3
+      # - name: carpenter build
+      #   uses: arcalot/arcaflow-plugin-image-builder@main
+      #   with:
+      #     args: build --build
