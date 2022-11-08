@@ -1,4 +1,4 @@
-name: Carpentry Push
+name: Carpentry Push SDK Update
 on:
   push:
     branches:
