@@ -43,3 +43,4 @@ jobs:
         uses: arcalot/arcaflow-plugin-image-builder@main
         with:
           args: build --build --push
+          
