@@ -15,7 +15,7 @@ from uperf_schema import (
     UPerfServerResults,
     UPerfServerParams,
     UPerfRawData,
-    Profile
+    Profile,
 )
 
 # Constants
@@ -36,9 +36,7 @@ def write_profile(profile: Profile):
         for transaction in group.transactions:
             transaction_element = ET.Element("transaction")
             if transaction.iterations is not None:
-                transaction_element.set(
-                    "iterations", str(transaction.iterations)
-                )
+                transaction_element.set("iterations", str(transaction.iterations))
             elif transaction.duration is not None:
                 transaction_element.set("duration", str(transaction.duration))
             elif transaction.rate is not None:
@@ -58,9 +56,7 @@ def write_profile(profile: Profile):
 
     # This project requires indented/formatted XML.
     ET.indent(tree)
-    ET.ElementTree(tree).write(
-        profile_path, encoding="us-ascii", xml_declaration=True
-    )
+    ET.ElementTree(tree).write(profile_path, encoding="us-ascii", xml_declaration=True)
     # It requires a newline at end of file
     with open(profile_path, "a") as profile_xml_file:
         profile_xml_file.write("\n")
@@ -88,9 +84,7 @@ def process_output(
     output: bytes,
 ) -> typing.Tuple[str, typing.Union[UPerfResults, UPerfError]]:
     decoded_output = output.decode("utf-8")
-    profile_run_search = re.search(
-        r"running profile:(.+) \.\.\.", decoded_output
-    )
+    profile_run_search = re.search(r"running profile:(.+) \.\.\.", decoded_output)
     if profile_run_search is None:
         return "error", UPerfError(
             "Failed to parse output: could not find profile name.\nOutput: "
@@ -120,11 +114,7 @@ def process_output(
         if ops != 0 or (transaction_index in transaction_last_timestamp):
             # Keep non-first zero values, but set ns_per_op to 0
             ns_per_op = (
-                int(
-                    1000
-                    * (time - transaction_last_timestamp[transaction_index])
-                    / ops
-                )
+                int(1000 * (time - transaction_last_timestamp[transaction_index]) / ops)
                 if ops != 0
                 else 0
             )
@@ -140,9 +130,7 @@ def process_output(
         transaction_last_timestamp[transaction_index] = time
 
     if len(timeseries_data_search) == 0:
-        return "error", UPerfError(
-            "No results found.\nOutput: " + decoded_output
-        )
+        return "error", UPerfError("No results found.\nOutput: " + decoded_output)
 
     return "success", UPerfResults(
         profile_name=profile_run, timeseries_data=timeseries_data

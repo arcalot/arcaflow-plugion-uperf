@@ -1,7 +1,7 @@
 import typing
 import enum
 from dataclasses import dataclass, field
-from arcaflow_plugin_sdk import annotations
+from arcaflow_plugin_sdk import annotations, schema
 
 type_descriptions = (
     """The flowop name for uperf.\n"""
@@ -113,16 +113,17 @@ class ProfileFlowOpConnection(ProfileFlowOpCommon):
             "description": "Sets the TCP_NODELAY socket option.",
         },
     )
-    wndsz: typing.Optional[int] = field(
-        default=None,
-        metadata={
-            "name": "wndsz",
-            "description": """Size of the socket send and receive buffer """
-            """in kib.\n"""
+    wndsz: typing.Annotated[
+        typing.Optional[int],
+        schema.units(schema.UNIT_BYTE),
+        schema.name("wndsz"),
+        schema.description(
+            """Size of the socket send and receive buffer """
+            """in bytes.\n"""
             """This parameter is used to set SO_SNDBUF, SO_RCVBUF flags """
             """using setsocktopt()""",
-        },
-    )
+        ),
+    ] = None
     engine: typing.Optional[str] = field(
         default=None,
         metadata={
@@ -141,7 +142,7 @@ class ProfileFlowOpConnection(ProfileFlowOpCommon):
         if self.tcp_nodelay:
             options.append("tcp_nodelay")
         if self.wndsz is not None:
-            options.append(f"wndsz={self.wndsz}k")
+            options.append(f"wndsz={self.wndsz}b")
         if self.engine is not None:
             options.append(f"engine={self.engine}")
 
@@ -151,11 +152,12 @@ class ProfileFlowOpConnection(ProfileFlowOpCommon):
 @dataclass
 class ProfileFlowOpDataCommon(ProfileFlowOpCommon):
     # Data
-    size: int = field(
-        default=64,
-        metadata={
-            "name": "size",
-            "description": """Unit: Kib\n"""
+    size: typing.Annotated[
+        int,
+        schema.units(schema.UNIT_BYTE),
+        schema.name("size"),
+        schema.description(
+            """Unit: bytes\n"""
             """Amount of data that is either read or written. Uperf """
             """supports exchange of:\n"""
             """ - Fixed size messages\n"""
@@ -168,29 +170,30 @@ class ProfileFlowOpDataCommon(ProfileFlowOpCommon):
             """parameter. For a random sized message, the a uniformly """
             """distributed value between the user specifed min and max """
             """is used by the transmitting side, and the receiving side """
-            """uses the max as the message size. Example: size=64 for 64k""",
-        },
-    )
-
-    randsize_max: typing.Optional[int] = field(
-        default=None,
-        metadata={
-            "name": "Random size max",
-            "description": """For when a random message size is desired, """
+            """uses the max as the message size. Example: size=64 for 64 """
+            """bytes per packet"""
+        ),
+    ] = 64
+    randsize_max: typing.Annotated[
+        typing.Optional[int],
+        schema.units(schema.UNIT_BYTE),
+        schema.name("randsize_max"),
+        schema.description(
+            """For when a random message size is desired, """
             """this sets the max random value, and the size parameter """
-            """sets the minimum. Unit: kib.""",
-        },
-    )
-
-    rsize: typing.Optional[int] = field(
-        default=None,
-        metadata={
-            "name": "receive-size",
-            "description": """Receive size in kib.\n"""
+            """sets the minimum. Unit: bytes.""",
+        ),
+    ] = None
+    rsize: typing.Annotated[
+        typing.Optional[int],
+        schema.units(schema.UNIT_BYTE),
+        schema.name("rsize"),
+        schema.description(
+            """Receive size in bytes.\n"""
             """For use with asymmetrical messages. For more contect, see """
             """description for "size" """,
-        },
-    )
+        ),
+    ] = None
     canfail: bool = field(
         default=False,
         metadata={
@@ -237,11 +240,11 @@ class ProfileFlowOpDataCommon(ProfileFlowOpCommon):
     def get_options(self):
         options = ProfileFlowOpCommon.get_options(self)
         if self.randsize_max is None:
-            options.append(f"size={self.size}k")
+            options.append(f"size={self.size}b")
         else:
-            options.append(f"size=rand({self.size}k, {self.randsize_max}k)")
+            options.append(f"size=rand({self.size}b, {self.randsize_max}b)")
         if self.rsize is not None:
-            options.append(f"rsize={self.rsize}k")
+            options.append(f"rsize={self.rsize}b")
         if self.canfail:
             options.append("canfail")
         if self.non_blocking:
@@ -284,7 +287,7 @@ class ProfileFlowOpSendFileCommon(ProfileFlowOpCommon):
             "description": """This parameter identifies the chunk size for """
             """the transfer. Instead of sending the whole file, uperf will """
             """send size sized chunks one at a time. This is used only if """
-            """nfiles=1. Unit: Kib""",
+            """nfiles=1. Unit: bytes""",
         },
     )
 
@@ -293,7 +296,7 @@ class ProfileFlowOpSendFileCommon(ProfileFlowOpCommon):
         options.append(f"dir={self.dir}")
         options.append(f"nfiles={self.nfiles}")
         if self.nfiles == 1 and self.size is not None:
-            options.append(f"size={self.size}")
+            options.append(f"size={self.size}b")
 
         return options
 
@@ -408,15 +411,9 @@ class ProfileTransaction:
                     DisconnectFlowOp,
                     annotations.discriminator_value("disconnect"),
                 ],
-                typing.Annotated[
-                    ReadFlowOp, annotations.discriminator_value("read")
-                ],
-                typing.Annotated[
-                    WriteFlowOp, annotations.discriminator_value("write")
-                ],
-                typing.Annotated[
-                    RecvFlowOp, annotations.discriminator_value("recv")
-                ],
+                typing.Annotated[ReadFlowOp, annotations.discriminator_value("read")],
+                typing.Annotated[WriteFlowOp, annotations.discriminator_value("write")],
+                typing.Annotated[RecvFlowOp, annotations.discriminator_value("recv")],
                 typing.Annotated[
                     SendtoFlowOp, annotations.discriminator_value("sendto")
                 ],
@@ -427,12 +424,8 @@ class ProfileTransaction:
                     SendFileVFlowOp,
                     annotations.discriminator_value("sendfilev"),
                 ],
-                typing.Annotated[
-                    NOPFlowOp, annotations.discriminator_value("NOP")
-                ],
-                typing.Annotated[
-                    ThinkFlowOp, annotations.discriminator_value("think")
-                ],
+                typing.Annotated[NOPFlowOp, annotations.discriminator_value("NOP")],
+                typing.Annotated[ThinkFlowOp, annotations.discriminator_value("think")],
             ],
             annotations.discriminator("type"),
         ]
@@ -511,9 +504,7 @@ class UPerfServerParams:
         default=60,
         metadata={
             "name": "run_duration",
-            "description": (
-                "How long the server should run before terminating."
-            ),
+            "description": ("How long the server should run before terminating."),
         },
     )
 

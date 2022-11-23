@@ -9,7 +9,7 @@ groups:
           - type: "accept"
             remotehost: "server"
             protocol: "tcp"
-            wndsz: 50
+            wndsz: 5120
             tcp_nodelay: true
       - duration: "10s"
         flowops:
