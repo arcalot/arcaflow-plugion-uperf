@@ -7,7 +7,7 @@ license = "Apache-2.0+GPL-2.0-only"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-arcaflow-plugin-sdk = "0.9.0"
+arcaflow-plugin-sdk = "0.10.0"
 
 
 [tool.poetry.dev-dependencies]
