@@ -53,8 +53,8 @@ ENTRYPOINT ["python3.9", "uperf_plugin.py"]
 CMD []
 
 LABEL org.opencontainers.image.source="https://github.com/arcalot/arcaflow-plugin-uperf"
-LABEL org.opencontainers.image.licenses="Apache-2.0+GPL-3.0-only"
+LABEL org.opencontainers.image.licenses="Apache-2.0+GPL-2.0-only"
 LABEL org.opencontainers.image.vendor="Arcalot project"
 LABEL org.opencontainers.image.authors="Arcalot contributors"
-LABEL org.opencontainers.image.title="Uperf Arcalot Plugin"
+LABEL org.opencontainers.image.title="Python Plugin Template"
 LABEL io.github.arcalot.arcaflow.plugin.version="1"
