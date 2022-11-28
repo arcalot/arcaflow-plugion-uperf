@@ -17,6 +17,7 @@ jobs:
   carpenter-build-prod:
     name: carpenter_build_prod
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout this project
@@ -28,6 +29,7 @@ jobs:
   carpenter-build-dev:
     name: carpenter_build_dev
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     if: github.ref != 'refs/heads/main'
     steps:
       - name: set_image_tag
@@ -43,4 +45,4 @@ jobs:
         uses: arcalot/arcaflow-plugin-image-builder@main
         with:
           args: build --build --push
-          
+
