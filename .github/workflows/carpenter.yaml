@@ -7,7 +7,7 @@ env:
   IMAGE_NAME: arcaflow-plugin-uperf
   IMAGE_TAG: 'latest'
   QUAY_IMG_EXP: 'never'
-  BUILD_TIMEOUT: 10 # So short that it should fail, as a test
+  BUILD_TIMEOUT: 600 # That is 10 minutes. It should finish within that time.
   GITHUB_USERNAME: ${{ github.actor }}
   GITHUB_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
   GITHUB_NAMESPACE: ${{ github.repository_owner }}
