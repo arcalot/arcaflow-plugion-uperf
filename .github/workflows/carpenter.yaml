@@ -24,7 +24,7 @@ jobs:
       - name: Checkout this project
         uses: actions/checkout@v3
       - name: carpenter build
-        uses: arcalot/arcaflow-plugin-image-builder@build-timeout-changes
+        uses: arcalot/arcaflow-plugin-image-builder@build-timeout-change
         with:
           args: build --build --push
   carpenter-build-dev:
@@ -43,7 +43,7 @@ jobs:
       - name: Checkout this project
         uses: actions/checkout@v3
       - name: carpenter build
-        uses: arcalot/arcaflow-plugin-image-builder@build-timeout-changes
+        uses: arcalot/arcaflow-plugin-image-builder@build-timeout-change
         with:
           args: build --build --push
 
