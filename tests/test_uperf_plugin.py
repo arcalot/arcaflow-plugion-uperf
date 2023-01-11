@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import socket
 import unittest
-import uperf_plugin
-import uperf_schema
+from arcaflow_plugin_uperf import uperf_plugin
+from arcaflow_plugin_uperf import uperf_schema
 import contextlib
 from arcaflow_plugin_sdk import plugin
 

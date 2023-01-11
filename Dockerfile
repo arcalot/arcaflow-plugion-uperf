@@ -51,9 +51,9 @@ RUN python3.9 -m pip install -r requirements.txt
 
 EXPOSE 20000
 
-WORKDIR /app/${package}
+WORKDIR /app
 
-ENTRYPOINT ["python3.9", "uperf_plugin.py"]
+ENTRYPOINT ["python3.9", "-m", "arcaflow_plugin_uperf.uperf_plugin"]
 CMD []
 
 LABEL org.opencontainers.image.source="https://github.com/arcalot/arcaflow-plugin-uperf"

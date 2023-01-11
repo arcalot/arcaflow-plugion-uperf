@@ -26,13 +26,13 @@ type_descriptions = (
 # Utility
 
 
-@dataclass
+@dataclass(frozen=True)
 class ThinkType(enum.Enum):
     IDLE = "idle"
     BUSY = "busy"
 
 
-@dataclass
+@dataclass(frozen=True)
 class IProtocol(enum.Enum):
     TCP = "tcp"
     UDP = "udp"
