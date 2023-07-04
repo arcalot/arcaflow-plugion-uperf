@@ -14,7 +14,7 @@ COPY pyproject.toml /app/
 
 RUN python3.9 -m pip install poetry==1.4.2 \
  && python3.9 -m poetry config virtualenvs.create false \
- && python3.9 -m poetry install --without dev \
+ && python3.9 -m poetry install --without dev --no-root \
  && python3.9 -m poetry export -f requirements.txt --output requirements.txt --without-hashes
 
 # run tests
