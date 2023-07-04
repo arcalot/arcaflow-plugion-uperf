@@ -20,5 +20,8 @@ jobs:
   docsgen:
     needs: act
     uses: arcalot/arcaflow-docsgen/.github/workflows/reusable_workflow.yaml@main
+    permissions:
+      contents: write
+      pull-requests: write
     with:
       plugin_path: "arcaflow_plugin_uperf/uperf_plugin.py"
