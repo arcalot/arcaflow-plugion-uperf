@@ -1,46 +1,43 @@
 ARG package=arcaflow_plugin_uperf
 
-FROM quay.io/centos/centos:stream8 AS builder
-RUN dnf install --setopt=tsflags=nodocs -y git make gcc lksctp-tools-devel automake && dnf clean all
-RUN git clone -b 1.0.7 https://github.com/uperf/uperf.git /uperf
-RUN cd /uperf && ./configure && make && make install
-
 # build poetry
 FROM quay.io/centos/centos:stream8 as poetry
 ARG package
-RUN dnf module -y install python39 && dnf install --setopt=tsflags=nodocs -y python39 python39-pip lksctp-tools-devel && dnf clean all
+RUN dnf module -y install python39 && dnf install --setopt=tsflags=nodocs -y python39 python39-pip lksctp-tools-devel && dnf clean all \
+ && dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm \
+ && dnf -y install uperf
 
 WORKDIR /app
 
 COPY poetry.lock /app/
 COPY pyproject.toml /app/
 
-RUN python3.9 -m pip install poetry \
+RUN python3.9 -m pip install poetry==1.4.2 \
  && python3.9 -m poetry config virtualenvs.create false \
  && python3.9 -m poetry install --without dev \
  && python3.9 -m poetry export -f requirements.txt --output requirements.txt --without-hashes
 
 # run tests
-COPY --from=builder /usr/local/bin/uperf /usr/local/bin/uperf
 COPY ${package}/ /app/${package}
 COPY tests /app/tests
 
 ENV PYTHONPATH /app/${package}
 
-RUN mkdir /htmlcov
-RUN pip3 install coverage
-RUN python3 -m coverage run tests/test_uperf_plugin.py
-RUN python3 -m coverage html -d /htmlcov --omit=/usr/local/*
+RUN mkdir /htmlcov \
+ && pip3 install coverage \
+ && python3 -m coverage run tests/test_uperf_plugin.py \
+ && python3 -m coverage html -d /htmlcov --omit=/usr/local/*
 
 
 # final image
 FROM quay.io/centos/centos:stream8
 ARG package
-RUN dnf module -y install python39 && dnf install --setopt=tsflags=nodocs -y python39 python39-pip lksctp-tools-devel && dnf clean all
+RUN dnf module -y install python39 && dnf install --setopt=tsflags=nodocs -y python39 python39-pip lksctp-tools-devel && dnf clean all \
+ && dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm \
+ && dnf -y install uperf
 
 WORKDIR /app
 
-COPY --from=builder /usr/local/bin/uperf /usr/local/bin/uperf
 COPY --from=poetry /app/requirements.txt /app/
 COPY --from=poetry /htmlcov /htmlcov/
 COPY LICENSE /app/
