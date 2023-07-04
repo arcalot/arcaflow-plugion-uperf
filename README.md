@@ -144,7 +144,7 @@ Runs uperf locally
         </details><details><summary>type (<code>string</code>)</summary>
         <table><tbody><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;accept&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>wndsz (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Size of the socket send and receive buffer in bytes.
+        <table><tbody><tr><th>Name:</th><td>wndsz</td></tr><tr><th>Description:</th><td>Size of the socket send and receive buffer in bytes.
 This parameter is used to set SO_SNDBUF, SO_RCVBUF flags using setsocktopt()</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details></td></tr>
@@ -175,7 +175,7 @@ This parameter is used to set SO_SNDBUF, SO_RCVBUF flags using setsocktopt()</td
         </details><details><summary>type (<code>string</code>)</summary>
         <table><tbody><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;connect&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>wndsz (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Size of the socket send and receive buffer in bytes.
+        <table><tbody><tr><th>Name:</th><td>wndsz</td></tr><tr><th>Description:</th><td>Size of the socket send and receive buffer in bytes.
 This parameter is used to set SO_SNDBUF, SO_RCVBUF flags using setsocktopt()</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details></td></tr>
@@ -277,13 +277,13 @@ This parameter is used to set SO_SNDBUF, SO_RCVBUF flags using setsocktopt()</td
         </details><details><summary>poll_timeout (<code>string</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>poll_timeout</td></tr><tr><th>Description:</th><td>If this option is set, the thread will first poll for specified duration before trying to carry out the operation. A poll timeout is returned as an error back to uperf.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>randsize_max (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>For when a random message size is desired, this sets the max random value, and the size parameter sets the minimum. Unit: bytes.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+        <table><tbody><tr><th>Name:</th><td>randsize_max</td></tr><tr><th>Description:</th><td>For when a random message size is desired, this sets the max random value, and the size parameter sets the minimum. Unit: bytes.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>rate (<code>int</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td>Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>rsize (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Receive size in bytes.
+        <table><tbody><tr><th>Name:</th><td>rsize</td></tr><tr><th>Description:</th><td>Receive size in bytes.
 For use with asymmetrical messages. For more contect, see description for &#34;size&#34; </td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>size (<code>int</code>)</summary>
@@ -313,13 +313,13 @@ For fixed size messages, the client and all servers used a sized fixed size for 
         </details><details><summary>poll_timeout (<code>string</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>poll_timeout</td></tr><tr><th>Description:</th><td>If this option is set, the thread will first poll for specified duration before trying to carry out the operation. A poll timeout is returned as an error back to uperf.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>randsize_max (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>For when a random message size is desired, this sets the max random value, and the size parameter sets the minimum. Unit: bytes.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+        <table><tbody><tr><th>Name:</th><td>randsize_max</td></tr><tr><th>Description:</th><td>For when a random message size is desired, this sets the max random value, and the size parameter sets the minimum. Unit: bytes.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>rate (<code>int</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td>Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>rsize (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Receive size in bytes.
+        <table><tbody><tr><th>Name:</th><td>rsize</td></tr><tr><th>Description:</th><td>Receive size in bytes.
 For use with asymmetrical messages. For more contect, see description for &#34;size&#34; </td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>size (<code>int</code>)</summary>
@@ -387,13 +387,13 @@ For fixed size messages, the client and all servers used a sized fixed size for 
         </details><details><summary>poll_timeout (<code>string</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>poll_timeout</td></tr><tr><th>Description:</th><td>If this option is set, the thread will first poll for specified duration before trying to carry out the operation. A poll timeout is returned as an error back to uperf.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>randsize_max (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>For when a random message size is desired, this sets the max random value, and the size parameter sets the minimum. Unit: bytes.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+        <table><tbody><tr><th>Name:</th><td>randsize_max</td></tr><tr><th>Description:</th><td>For when a random message size is desired, this sets the max random value, and the size parameter sets the minimum. Unit: bytes.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>rate (<code>int</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td>Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>rsize (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Receive size in bytes.
+        <table><tbody><tr><th>Name:</th><td>rsize</td></tr><tr><th>Description:</th><td>Receive size in bytes.
 For use with asymmetrical messages. For more contect, see description for &#34;size&#34; </td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>size (<code>int</code>)</summary>
@@ -443,13 +443,13 @@ For fixed size messages, the client and all servers used a sized fixed size for 
         </details><details><summary>poll_timeout (<code>string</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>poll_timeout</td></tr><tr><th>Description:</th><td>If this option is set, the thread will first poll for specified duration before trying to carry out the operation. A poll timeout is returned as an error back to uperf.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>randsize_max (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>For when a random message size is desired, this sets the max random value, and the size parameter sets the minimum. Unit: bytes.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+        <table><tbody><tr><th>Name:</th><td>randsize_max</td></tr><tr><th>Description:</th><td>For when a random message size is desired, this sets the max random value, and the size parameter sets the minimum. Unit: bytes.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>rate (<code>int</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td>Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>rsize (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Receive size in bytes.
+        <table><tbody><tr><th>Name:</th><td>rsize</td></tr><tr><th>Description:</th><td>Receive size in bytes.
 For use with asymmetrical messages. For more contect, see description for &#34;size&#34; </td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>size (<code>int</code>)</summary>
