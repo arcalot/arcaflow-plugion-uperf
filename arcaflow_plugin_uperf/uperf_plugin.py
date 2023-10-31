@@ -1,13 +1,16 @@
 #!/usr/bin/env python3.9
 
 import sys
+import threading
+import time
 import typing
 import xml.etree.ElementTree as ET
 import subprocess
 import os
 import re
+from threading import Event
 
-from arcaflow_plugin_sdk import plugin
+from arcaflow_plugin_sdk import plugin, predefined_schemas
 from uperf_schema import (
     UPerfError,
     UPerfResults,
@@ -115,7 +118,7 @@ def process_output(
         if ops != 0 or (transaction_index in transaction_last_timestamp):
             # Keep non-first zero values, but set ns_per_op to 0
             ns_per_op = (
-                int(1000 * (time - transaction_last_timestamp[transaction_index]) / ops)
+                int(1000 * (time - transaction_last_timestamp.get(transaction_index, time)) / ops)
                 if ops != 0
                 else 0
             )
@@ -138,36 +141,66 @@ def process_output(
     )
 
 
-@plugin.step(
-    id="uperf_server",
-    name="UPerf Server",
-    description=(
-        "Runs the passive UPerf server to allow benchmarks between the client"
-        " and this server"
-    ),
-    outputs={"success": UPerfServerResults, "error": UPerfServerError},
-)
-def run_uperf_server(
-    params: UPerfServerParams,
-) -> typing.Tuple[str, typing.Union[UPerfServerResults, UPerfServerError]]:
-    # Start the passive server
-    # Note: Uperf calls it 'slave'
-    try:
-        result = subprocess.run(
+class UperfServerStep:
+    exit_event: threading.Event
+
+    def __init__(self):
+        self.exit_event = Event()
+
+    @plugin.signal_handler(
+        id=predefined_schemas.cancel_signal_schema.id,
+        name=predefined_schemas.cancel_signal_schema.display.name,
+        description=predefined_schemas.cancel_signal_schema.display.
+        description,
+        icon=predefined_schemas.cancel_signal_schema.display.icon,
+    )
+    def cancel_step(self, _input: predefined_schemas.cancelInput):
+        # Signal to exit.
+        self.exit_event.set()
+
+    @plugin.step_with_signals(
+        id="uperf_server",
+        name="UPerf Server",
+        description=(
+            "Runs the passive UPerf server to allow benchmarks between the client"
+            " and this server"
+        ),
+        outputs={"success": UPerfServerResults, "error": UPerfServerError},
+        signal_handler_method_names=["cancel_step"],
+        signal_emitters=[],
+        step_object_constructor=lambda: UperfServerStep(),
+    )
+    def run_uperf_server(
+        self,
+        params: UPerfServerParams,
+    ) -> typing.Tuple[str, typing.Union[UPerfServerResults, UPerfServerError]]:
+        # Start the passive server
+        # Note: Uperf calls it 'slave'
+        process = subprocess.Popen(
             ["uperf", "-s"],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            timeout=params.run_duration,
         )
-        # It should not end itself, so getting here means there was an
-        # error.
-        return "error", UPerfServerError(
-            result.returncode,
-            result.stdout.decode("utf-8") + result.stderr.decode("utf-8"),
-        )
-    except subprocess.TimeoutExpired:
-        # Worked as intended. It doesn't end itself, so it finished when it
-        # timed out.
+
+        # Poll for early exit (which is a failure)
+        seconds_ran = 0
+        while seconds_ran < params.run_duration or params.run_duration <= 0:
+            self.exit_event.wait(1.0)
+            # It should not be done yet. If it has exited, it likely failed.
+            exit_return_code = process.poll()
+            if exit_return_code is not None:
+                # There was an error
+                std_out, std_err = process.communicate()
+                return "error", UPerfServerError(
+                    exit_return_code,
+                    std_out.decode("utf-8") + std_err.decode("utf-8"),
+                )
+            if self.exit_event.is_set():  # Signal was called. Exit the loop.
+                break
+            seconds_ran += 1
+
+        process.terminate()
+
         return "success", UPerfServerResults()
 
 
@@ -219,7 +252,7 @@ if __name__ == "__main__":
         plugin.run(
             plugin.build_schema(
                 # List your step functions here:
-                run_uperf_server,
+                UperfServerStep.run_uperf_server,
                 run_uperf,
             )
         )
