@@ -2,7 +2,6 @@
 
 import sys
 import threading
-import time
 import typing
 import xml.etree.ElementTree as ET
 import subprocess
@@ -117,11 +116,8 @@ def process_output(
         # Discard zero first values.
         if ops != 0 or (transaction_index in transaction_last_timestamp):
             # Keep non-first zero values, but set ns_per_op to 0
-            ns_per_op = (
-                int(1000 * (time - transaction_last_timestamp.get(transaction_index, time)) / ops)
-                if ops != 0
-                else 0
-            )
+            time_diff = time - transaction_last_timestamp.get(transaction_index, time)
+            ns_per_op = int(1000 * time_diff / ops) if ops != 0 else 0
             # Create inner dict if new transaction result found.
             if transaction_index not in timeseries_data:
                 timeseries_data[transaction_index] = {}
@@ -150,8 +146,7 @@ class UperfServerStep:
     @plugin.signal_handler(
         id=predefined_schemas.cancel_signal_schema.id,
         name=predefined_schemas.cancel_signal_schema.display.name,
-        description=predefined_schemas.cancel_signal_schema.display.
-        description,
+        description=predefined_schemas.cancel_signal_schema.display.description,
         icon=predefined_schemas.cancel_signal_schema.display.icon,
     )
     def cancel_step(self, _input: predefined_schemas.cancelInput):

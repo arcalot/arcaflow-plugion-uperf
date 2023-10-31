@@ -88,7 +88,10 @@ class ExamplePluginTest(unittest.TestCase):
         # Test the server succesfully exiting
         server_1sec_input = uperf_plugin.UPerfServerParams(1)
         step_object = uperf_plugin.UperfServerStep()
-        output_id, _ = step_object.run_uperf_server(self.id() + "_server", server_1sec_input)
+        output_id, _ = step_object.run_uperf_server(
+            self.id() + "_server",
+            server_1sec_input,
+        )
 
         self.assertEqual("success", output_id)
         # The output data is currently empty.
@@ -103,7 +106,10 @@ class ExamplePluginTest(unittest.TestCase):
         # Create the step object
         step_object = uperf_plugin.UperfServerStep()
         # Run the server, which should fail.
-        output_id, _ = step_object.run_uperf_server(self.id() + "_server2", server_1sec_input)
+        output_id, _ = step_object.run_uperf_server(
+            self.id() + "_server2",
+            server_1sec_input,
+        )
         server.close()
 
         self.assertEqual("error", output_id)
@@ -112,7 +118,10 @@ class ExamplePluginTest(unittest.TestCase):
         # Test the client failing due to no server
 
         with contextlib.redirect_stdout(None):  # Hide error messages
-            output_id, output_obj = uperf_plugin.run_uperf(self.id() + "_client", simple_profile)
+            output_id, output_obj = uperf_plugin.run_uperf(
+                self.id() + "_client",
+                simple_profile,
+            )
         self.assertEqual("error", output_id)
         self.assertEqual(
             1,
