@@ -89,8 +89,8 @@ class ExamplePluginTest(unittest.TestCase):
         server_1sec_input = uperf_plugin.UPerfServerParams(1)
         step_object = uperf_plugin.UperfServerStep()
         output_id, _ = step_object.run_uperf_server(
-            self.id() + "_server",
-            server_1sec_input,
+            run_id=self.id() + "_plugin_server_ci",
+            params=server_1sec_input,
         )
 
         self.assertEqual("success", output_id)
@@ -107,8 +107,8 @@ class ExamplePluginTest(unittest.TestCase):
         step_object = uperf_plugin.UperfServerStep()
         # Run the server, which should fail.
         output_id, _ = step_object.run_uperf_server(
-            self.id() + "_server2",
-            server_1sec_input,
+            run_id=self.id() + "_plugin_server_2_ci",
+            params=server_1sec_input,
         )
         server.close()
 
@@ -119,8 +119,8 @@ class ExamplePluginTest(unittest.TestCase):
 
         with contextlib.redirect_stdout(None):  # Hide error messages
             output_id, output_obj = uperf_plugin.run_uperf(
-                self.id() + "_client",
-                simple_profile,
+                run_id=self.id() + "_plugin_client_ci",
+                params=simple_profile,
             )
         self.assertEqual("error", output_id)
         self.assertEqual(
