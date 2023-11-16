@@ -87,9 +87,10 @@ class ExamplePluginTest(unittest.TestCase):
     def test_functional(self):
         # Test the server succesfully exiting
         server_1sec_input = uperf_plugin.UPerfServerParams(1)
-
-        output_id, _ = uperf_plugin.run_uperf_server(
-            params=server_1sec_input, run_id="plugin_server_ci"
+        step_object = uperf_plugin.UperfServerStep()
+        output_id, _ = step_object.run_uperf_server(
+            run_id=self.id() + "_plugin_server_ci",
+            params=server_1sec_input,
         )
 
         self.assertEqual("success", output_id)
@@ -102,9 +103,12 @@ class ExamplePluginTest(unittest.TestCase):
         server.bind(("127.0.0.1", 20000))
         server.listen(8)
         server.setblocking(False)
+        # Create the step object
+        step_object = uperf_plugin.UperfServerStep()
         # Run the server, which should fail.
-        output_id, _ = uperf_plugin.run_uperf_server(
-            params=server_1sec_input, run_id="plugin_server_ci"
+        output_id, _ = step_object.run_uperf_server(
+            run_id=self.id() + "_plugin_server_2_ci",
+            params=server_1sec_input,
         )
         server.close()
 
@@ -115,7 +119,8 @@ class ExamplePluginTest(unittest.TestCase):
 
         with contextlib.redirect_stdout(None):  # Hide error messages
             output_id, output_obj = uperf_plugin.run_uperf(
-                params=simple_profile, run_id="plugin_client_ci"
+                run_id=self.id() + "_plugin_client_ci",
+                params=simple_profile,
             )
         self.assertEqual("error", output_id)
         self.assertEqual(

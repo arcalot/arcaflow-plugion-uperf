@@ -581,12 +581,12 @@ Runs the passive UPerf server to allow benchmarks between the client and this se
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>UPerfServerParams</td></tr>
 <tr><th>Properties</th><td><details><summary>run_duration (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>run_duration</td></tr><tr><th>Description:</th><td>How long the server should run before terminating.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>60</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>run_duration</td></tr><tr><th>Description:</th><td>How long the server should run before terminating. 0 for indefinite.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>60</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>UPerfServerParams (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>run_duration (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>run_duration</td></tr><tr><th>Description:</th><td>How long the server should run before terminating.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>60</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>run_duration</td></tr><tr><th>Description:</th><td>How long the server should run before terminating. 0 for indefinite.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>60</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details></td></tr>
 </tbody></table>

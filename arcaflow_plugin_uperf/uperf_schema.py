@@ -504,7 +504,8 @@ class UPerfServerParams:
         default=60,
         metadata={
             "name": "run_duration",
-            "description": ("How long the server should run before terminating."),
+            "description": "How long the server should run before terminating."
+            " 0 for indefinite.",
         },
     )
 
