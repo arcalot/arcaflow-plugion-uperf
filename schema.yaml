@@ -1,0 +1,1502 @@
+steps:
+  uperf:
+    display:
+      description: Runs uperf locally
+      name: UPerf Run
+    id: uperf
+    input:
+      objects:
+        AcceptFlowOp:
+          id: AcceptFlowOp
+          properties:
+            count:
+              display:
+                description: The number of times this flowop will be executed.
+                name: count
+              required: false
+              type:
+                type_id: integer
+            engine:
+              display:
+                description: The SSL Engine used by OpenSSL
+                name: engine
+              required: false
+              type:
+                type_id: string
+            port:
+              default: '20000'
+              display:
+                description: The port of the remote host server
+                name: port
+              required: false
+              type:
+                type_id: integer
+            protocol:
+              default: '"tcp"'
+              display:
+                description: The protocol used to connect to the remote host.
+                name: protocol
+              required: false
+              type:
+                type_id: enum_string
+                values:
+                  sctp:
+                    name: SCTP
+                  ssl:
+                    name: SSL
+                  tcp:
+                    name: TCP
+                  udp:
+                    name: UDP
+                  vsock:
+                    name: VSOCK
+            rate:
+              display:
+                description: 'Experimental: This option causes uperf to execute this
+                  flowop at the specified rate for iterations or duration seconds.'
+                name: rate
+              required: false
+              type:
+                type_id: integer
+            remotehost:
+              default: '"127.0.0.1"'
+              display:
+                description: The remote host server that we need to connect or accept
+                  connection from
+                name: remotehost
+              required: false
+              type:
+                type_id: string
+            tcp_nodelay:
+              default: 'false'
+              display:
+                description: Sets the TCP_NODELAY socket option.
+                name: tcp_nodelay
+              required: false
+              type:
+                type_id: bool
+            type:
+              default: '"accept"'
+              display: {}
+              required: false
+              type:
+                type_id: string
+            wndsz:
+              display:
+                description: 'Size of the socket send and receive buffer in bytes.
+
+                  This parameter is used to set SO_SNDBUF, SO_RCVBUF flags using setsocktopt()'
+                name: wndsz
+              required: false
+              type:
+                type_id: integer
+                units:
+                  base_unit:
+                    name_long_plural: bytes
+                    name_long_singular: byte
+                    name_short_plural: B
+                    name_short_singular: B
+                  multipliers:
+                    1024:
+                      name_long_plural: kilobytes
+                      name_long_singular: kilobyte
+                      name_short_plural: kB
+                      name_short_singular: kB
+                    1048576:
+                      name_long_plural: megabytes
+                      name_long_singular: megabyte
+                      name_short_plural: MB
+                      name_short_singular: MB
+                    1073741824:
+                      name_long_plural: gigabytes
+                      name_long_singular: gigabyte
+                      name_short_plural: GB
+                      name_short_singular: GB
+                    1099511627776:
+                      name_long_plural: terabytes
+                      name_long_singular: terabyte
+                      name_short_plural: TB
+                      name_short_singular: TB
+                    1125899906842624:
+                      name_long_plural: petabytes
+                      name_long_singular: petabyte
+                      name_short_plural: PB
+                      name_short_singular: PB
+        ConnectFlowOp:
+          id: ConnectFlowOp
+          properties:
+            count:
+              display:
+                description: The number of times this flowop will be executed.
+                name: count
+              required: false
+              type:
+                type_id: integer
+            engine:
+              display:
+                description: The SSL Engine used by OpenSSL
+                name: engine
+              required: false
+              type:
+                type_id: string
+            port:
+              default: '20000'
+              display:
+                description: The port of the remote host server
+                name: port
+              required: false
+              type:
+                type_id: integer
+            protocol:
+              default: '"tcp"'
+              display:
+                description: The protocol used to connect to the remote host.
+                name: protocol
+              required: false
+              type:
+                type_id: enum_string
+                values:
+                  sctp:
+                    name: SCTP
+                  ssl:
+                    name: SSL
+                  tcp:
+                    name: TCP
+                  udp:
+                    name: UDP
+                  vsock:
+                    name: VSOCK
+            rate:
+              display:
+                description: 'Experimental: This option causes uperf to execute this
+                  flowop at the specified rate for iterations or duration seconds.'
+                name: rate
+              required: false
+              type:
+                type_id: integer
+            remotehost:
+              default: '"127.0.0.1"'
+              display:
+                description: The remote host server that we need to connect or accept
+                  connection from
+                name: remotehost
+              required: false
+              type:
+                type_id: string
+            tcp_nodelay:
+              default: 'false'
+              display:
+                description: Sets the TCP_NODELAY socket option.
+                name: tcp_nodelay
+              required: false
+              type:
+                type_id: bool
+            type:
+              default: '"connect"'
+              display: {}
+              required: false
+              type:
+                type_id: string
+            wndsz:
+              display:
+                description: 'Size of the socket send and receive buffer in bytes.
+
+                  This parameter is used to set SO_SNDBUF, SO_RCVBUF flags using setsocktopt()'
+                name: wndsz
+              required: false
+              type:
+                type_id: integer
+                units:
+                  base_unit:
+                    name_long_plural: bytes
+                    name_long_singular: byte
+                    name_short_plural: B
+                    name_short_singular: B
+                  multipliers:
+                    1024:
+                      name_long_plural: kilobytes
+                      name_long_singular: kilobyte
+                      name_short_plural: kB
+                      name_short_singular: kB
+                    1048576:
+                      name_long_plural: megabytes
+                      name_long_singular: megabyte
+                      name_short_plural: MB
+                      name_short_singular: MB
+                    1073741824:
+                      name_long_plural: gigabytes
+                      name_long_singular: gigabyte
+                      name_short_plural: GB
+                      name_short_singular: GB
+                    1099511627776:
+                      name_long_plural: terabytes
+                      name_long_singular: terabyte
+                      name_short_plural: TB
+                      name_short_singular: TB
+                    1125899906842624:
+                      name_long_plural: petabytes
+                      name_long_singular: petabyte
+                      name_short_plural: PB
+                      name_short_singular: PB
+        DisconnectFlowOp:
+          id: DisconnectFlowOp
+          properties:
+            conn:
+              display:
+                description: If you know the connection ID, you can specify which
+                  one to disconnect.
+                name: connection id
+              required: false
+              type:
+                type_id: integer
+            count:
+              display:
+                description: The number of times this flowop will be executed.
+                name: count
+              required: false
+              type:
+                type_id: integer
+            rate:
+              display:
+                description: 'Experimental: This option causes uperf to execute this
+                  flowop at the specified rate for iterations or duration seconds.'
+                name: rate
+              required: false
+              type:
+                type_id: integer
+            type:
+              default: '"disconnect"'
+              display: {}
+              required: false
+              type:
+                type_id: string
+        NOPFlowOp:
+          id: NOPFlowOp
+          properties:
+            count:
+              display:
+                description: The number of times this flowop will be executed.
+                name: count
+              required: false
+              type:
+                type_id: integer
+            rate:
+              display:
+                description: 'Experimental: This option causes uperf to execute this
+                  flowop at the specified rate for iterations or duration seconds.'
+                name: rate
+              required: false
+              type:
+                type_id: integer
+            type:
+              default: '"NOP"'
+              display: {}
+              required: false
+              type:
+                type_id: string
+        Profile:
+          id: Profile
+          properties:
+            groups:
+              display:
+                description: A list of groups in the profile.
+                name: groups
+              required: true
+              type:
+                items:
+                  id: ProfileGroup
+                  type_id: ref
+                type_id: list
+            name:
+              display:
+                description: The name you assign to the profile. Does not change the
+                  profile's behavior.
+                name: name
+              required: true
+              type:
+                type_id: string
+        ProfileGroup:
+          id: ProfileGroup
+          properties:
+            nprocs:
+              display:
+                description: The number of processes to run, with each process running
+                  a clone of the group
+                name: nprocs
+              required: false
+              type:
+                type_id: integer
+            nthreads:
+              display:
+                description: The number of threads to run, with each thread running
+                  a clone of the group
+                name: nthreads
+              required: false
+              type:
+                type_id: integer
+            transactions:
+              display:
+                description: A list of transactions in the group
+                name: transactions
+              required: true
+              type:
+                items:
+                  id: ProfileTransaction
+                  type_id: ref
+                type_id: list
+        ProfileTransaction:
+          id: ProfileTransaction
+          properties:
+            duration:
+              display:
+                description: How long the items in the transaction run.
+                name: duration
+              required: false
+              type:
+                type_id: string
+            flowops:
+              display:
+                description: 'The flowop name for uperf.
+
+                  - connect: Specifies that a connection needs to be opened.
+
+                  - accept: Specifies that a connection needs to be accepted from
+                  the remote
+
+                  - disconnect: Disconnects from the existing connection.
+
+                  - read: Data read on the client side (from the server).
+
+                  - write: Data written from the client (to the server).
+
+                  - redv: Receiving a message back from the server to the client.
+
+                  - sendto: A message sent from the client to the server.
+
+                  - sendfile: Uses the sendfile(3EXT) function call to transfer a
+                  single file.
+
+                  - sendfilev: Transfers a set of files using the sendfilev(3EXT)
+                  interface. Multiple files are randomly picked from all transferrable
+                  files (see dir below) and tranferred to the server.
+
+                  - NOP: Does no operation.
+
+                  - think: For period of time with the CPU idling or busy.'
+                name: flowops
+              required: true
+              type:
+                items:
+                  discriminator_field_name: type
+                  discriminator_inlined: true
+                  type_id: one_of_string
+                  types:
+                    NOP:
+                      id: NOPFlowOp
+                      type_id: ref
+                    accept:
+                      id: AcceptFlowOp
+                      type_id: ref
+                    connect:
+                      id: ConnectFlowOp
+                      type_id: ref
+                    disconnect:
+                      id: DisconnectFlowOp
+                      type_id: ref
+                    read:
+                      id: ReadFlowOp
+                      type_id: ref
+                    recv:
+                      id: RecvFlowOp
+                      type_id: ref
+                    sendfile:
+                      id: SendFileFlowOp
+                      type_id: ref
+                    sendfilev:
+                      id: SendFileVFlowOp
+                      type_id: ref
+                    sendto:
+                      id: SendtoFlowOp
+                      type_id: ref
+                    think:
+                      id: ThinkFlowOp
+                      type_id: ref
+                    write:
+                      id: WriteFlowOp
+                      type_id: ref
+                type_id: list
+            iterations:
+              display:
+                description: The number of times the contents of the transaction will
+                  run.
+                name: iterations
+              required: false
+              type:
+                type_id: integer
+            rate:
+              display:
+                description: 'For limiting the rate. '
+                name: rate
+              required: false
+              type:
+                type_id: integer
+        ReadFlowOp:
+          id: ReadFlowOp
+          properties:
+            canfail:
+              default: 'false'
+              display:
+                description: Indicates that a failure for this flowop will not cause
+                  uperf to abort. This is espcially useful in UDP where a packet drop
+                  does not constitue a fatal error. This can be also be used for example,
+                  to test a SYN flood attack (Threads connect() repeatedly ignoring
+                  errors).
+                name: canfail
+              required: false
+              type:
+                type_id: bool
+            conn:
+              display:
+                description: "Every open connection is assigned a connection name.\n\
+                  \ Currently, the name can be any valid integer, however, uperf could\
+                  \ take a string in the future. conn identifies the connection to\
+                  \ use with this flowop. This connection name is thread private."
+                name: connection id
+              required: false
+              type:
+                type_id: integer
+            count:
+              display:
+                description: The number of times this flowop will be executed.
+                name: count
+              required: false
+              type:
+                type_id: integer
+            non_blocking:
+              default: 'false'
+              display:
+                description: Use non-blocking IO. The socket/file descriptor is set
+                  the NO_BLOCK flag.
+                name: non_blocking
+              required: false
+              type:
+                type_id: bool
+            poll_timeout:
+              display:
+                description: If this option is set, the thread will first poll for
+                  specified duration before trying to carry out the operation. A poll
+                  timeout is returned as an error back to uperf.
+                name: poll_timeout
+              required: false
+              type:
+                type_id: string
+            randsize_max:
+              display:
+                description: 'For when a random message size is desired, this sets
+                  the max random value, and the size parameter sets the minimum. Unit:
+                  bytes.'
+                name: randsize_max
+              required: false
+              type:
+                type_id: integer
+                units:
+                  base_unit:
+                    name_long_plural: bytes
+                    name_long_singular: byte
+                    name_short_plural: B
+                    name_short_singular: B
+                  multipliers:
+                    1024:
+                      name_long_plural: kilobytes
+                      name_long_singular: kilobyte
+                      name_short_plural: kB
+                      name_short_singular: kB
+                    1048576:
+                      name_long_plural: megabytes
+                      name_long_singular: megabyte
+                      name_short_plural: MB
+                      name_short_singular: MB
+                    1073741824:
+                      name_long_plural: gigabytes
+                      name_long_singular: gigabyte
+                      name_short_plural: GB
+                      name_short_singular: GB
+                    1099511627776:
+                      name_long_plural: terabytes
+                      name_long_singular: terabyte
+                      name_short_plural: TB
+                      name_short_singular: TB
+                    1125899906842624:
+                      name_long_plural: petabytes
+                      name_long_singular: petabyte
+                      name_short_plural: PB
+                      name_short_singular: PB
+            rate:
+              display:
+                description: 'Experimental: This option causes uperf to execute this
+                  flowop at the specified rate for iterations or duration seconds.'
+                name: rate
+              required: false
+              type:
+                type_id: integer
+            rsize:
+              display:
+                description: 'Receive size in bytes.
+
+                  For use with asymmetrical messages. For more contect, see description
+                  for "size" '
+                name: rsize
+              required: false
+              type:
+                type_id: integer
+                units:
+                  base_unit:
+                    name_long_plural: bytes
+                    name_long_singular: byte
+                    name_short_plural: B
+                    name_short_singular: B
+                  multipliers:
+                    1024:
+                      name_long_plural: kilobytes
+                      name_long_singular: kilobyte
+                      name_short_plural: kB
+                      name_short_singular: kB
+                    1048576:
+                      name_long_plural: megabytes
+                      name_long_singular: megabyte
+                      name_short_plural: MB
+                      name_short_singular: MB
+                    1073741824:
+                      name_long_plural: gigabytes
+                      name_long_singular: gigabyte
+                      name_short_plural: GB
+                      name_short_singular: GB
+                    1099511627776:
+                      name_long_plural: terabytes
+                      name_long_singular: terabyte
+                      name_short_plural: TB
+                      name_short_singular: TB
+                    1125899906842624:
+                      name_long_plural: petabytes
+                      name_long_singular: petabyte
+                      name_short_plural: PB
+                      name_short_singular: PB
+            size:
+              default: '64'
+              display:
+                description: "Unit: bytes\nAmount of data that is either read or written.\
+                  \ Uperf supports exchange of:\n - Fixed size messages\n - Asymmetrical\
+                  \ size messages\n - Random size messages\nFor fixed size messages,\
+                  \ the client and all servers used a sized fixed size for receives\
+                  \ and transmits. For asymmetrical messages, the slaves use the size\
+                  \ specified by the rszize parameter. The master still uses the size\
+                  \ parameter. For a random sized message, the a uniformly distributed\
+                  \ value between the user specifed min and max is used by the transmitting\
+                  \ side, and the receiving side uses the max as the message size.\
+                  \ Example: size=64 for 64 bytes per packet"
+                name: size
+              required: false
+              type:
+                type_id: integer
+                units:
+                  base_unit:
+                    name_long_plural: bytes
+                    name_long_singular: byte
+                    name_short_plural: B
+                    name_short_singular: B
+                  multipliers:
+                    1024:
+                      name_long_plural: kilobytes
+                      name_long_singular: kilobyte
+                      name_short_plural: kB
+                      name_short_singular: kB
+                    1048576:
+                      name_long_plural: megabytes
+                      name_long_singular: megabyte
+                      name_short_plural: MB
+                      name_short_singular: MB
+                    1073741824:
+                      name_long_plural: gigabytes
+                      name_long_singular: gigabyte
+                      name_short_plural: GB
+                      name_short_singular: GB
+                    1099511627776:
+                      name_long_plural: terabytes
+                      name_long_singular: terabyte
+                      name_short_plural: TB
+                      name_short_singular: TB
+                    1125899906842624:
+                      name_long_plural: petabytes
+                      name_long_singular: petabyte
+                      name_short_plural: PB
+                      name_short_singular: PB
+            type:
+              default: '"read"'
+              display: {}
+              required: false
+              type:
+                type_id: string
+        RecvFlowOp:
+          id: RecvFlowOp
+          properties:
+            canfail:
+              default: 'false'
+              display:
+                description: Indicates that a failure for this flowop will not cause
+                  uperf to abort. This is espcially useful in UDP where a packet drop
+                  does not constitue a fatal error. This can be also be used for example,
+                  to test a SYN flood attack (Threads connect() repeatedly ignoring
+                  errors).
+                name: canfail
+              required: false
+              type:
+                type_id: bool
+            conn:
+              display:
+                description: "Every open connection is assigned a connection name.\n\
+                  \ Currently, the name can be any valid integer, however, uperf could\
+                  \ take a string in the future. conn identifies the connection to\
+                  \ use with this flowop. This connection name is thread private."
+                name: connection id
+              required: false
+              type:
+                type_id: integer
+            count:
+              display:
+                description: The number of times this flowop will be executed.
+                name: count
+              required: false
+              type:
+                type_id: integer
+            non_blocking:
+              default: 'false'
+              display:
+                description: Use non-blocking IO. The socket/file descriptor is set
+                  the NO_BLOCK flag.
+                name: non_blocking
+              required: false
+              type:
+                type_id: bool
+            poll_timeout:
+              display:
+                description: If this option is set, the thread will first poll for
+                  specified duration before trying to carry out the operation. A poll
+                  timeout is returned as an error back to uperf.
+                name: poll_timeout
+              required: false
+              type:
+                type_id: string
+            randsize_max:
+              display:
+                description: 'For when a random message size is desired, this sets
+                  the max random value, and the size parameter sets the minimum. Unit:
+                  bytes.'
+                name: randsize_max
+              required: false
+              type:
+                type_id: integer
+                units:
+                  base_unit:
+                    name_long_plural: bytes
+                    name_long_singular: byte
+                    name_short_plural: B
+                    name_short_singular: B
+                  multipliers:
+                    1024:
+                      name_long_plural: kilobytes
+                      name_long_singular: kilobyte
+                      name_short_plural: kB
+                      name_short_singular: kB
+                    1048576:
+                      name_long_plural: megabytes
+                      name_long_singular: megabyte
+                      name_short_plural: MB
+                      name_short_singular: MB
+                    1073741824:
+                      name_long_plural: gigabytes
+                      name_long_singular: gigabyte
+                      name_short_plural: GB
+                      name_short_singular: GB
+                    1099511627776:
+                      name_long_plural: terabytes
+                      name_long_singular: terabyte
+                      name_short_plural: TB
+                      name_short_singular: TB
+                    1125899906842624:
+                      name_long_plural: petabytes
+                      name_long_singular: petabyte
+                      name_short_plural: PB
+                      name_short_singular: PB
+            rate:
+              display:
+                description: 'Experimental: This option causes uperf to execute this
+                  flowop at the specified rate for iterations or duration seconds.'
+                name: rate
+              required: false
+              type:
+                type_id: integer
+            rsize:
+              display:
+                description: 'Receive size in bytes.
+
+                  For use with asymmetrical messages. For more contect, see description
+                  for "size" '
+                name: rsize
+              required: false
+              type:
+                type_id: integer
+                units:
+                  base_unit:
+                    name_long_plural: bytes
+                    name_long_singular: byte
+                    name_short_plural: B
+                    name_short_singular: B
+                  multipliers:
+                    1024:
+                      name_long_plural: kilobytes
+                      name_long_singular: kilobyte
+                      name_short_plural: kB
+                      name_short_singular: kB
+                    1048576:
+                      name_long_plural: megabytes
+                      name_long_singular: megabyte
+                      name_short_plural: MB
+                      name_short_singular: MB
+                    1073741824:
+                      name_long_plural: gigabytes
+                      name_long_singular: gigabyte
+                      name_short_plural: GB
+                      name_short_singular: GB
+                    1099511627776:
+                      name_long_plural: terabytes
+                      name_long_singular: terabyte
+                      name_short_plural: TB
+                      name_short_singular: TB
+                    1125899906842624:
+                      name_long_plural: petabytes
+                      name_long_singular: petabyte
+                      name_short_plural: PB
+                      name_short_singular: PB
+            size:
+              default: '64'
+              display:
+                description: "Unit: bytes\nAmount of data that is either read or written.\
+                  \ Uperf supports exchange of:\n - Fixed size messages\n - Asymmetrical\
+                  \ size messages\n - Random size messages\nFor fixed size messages,\
+                  \ the client and all servers used a sized fixed size for receives\
+                  \ and transmits. For asymmetrical messages, the slaves use the size\
+                  \ specified by the rszize parameter. The master still uses the size\
+                  \ parameter. For a random sized message, the a uniformly distributed\
+                  \ value between the user specifed min and max is used by the transmitting\
+                  \ side, and the receiving side uses the max as the message size.\
+                  \ Example: size=64 for 64 bytes per packet"
+                name: size
+              required: false
+              type:
+                type_id: integer
+                units:
+                  base_unit:
+                    name_long_plural: bytes
+                    name_long_singular: byte
+                    name_short_plural: B
+                    name_short_singular: B
+                  multipliers:
+                    1024:
+                      name_long_plural: kilobytes
+                      name_long_singular: kilobyte
+                      name_short_plural: kB
+                      name_short_singular: kB
+                    1048576:
+                      name_long_plural: megabytes
+                      name_long_singular: megabyte
+                      name_short_plural: MB
+                      name_short_singular: MB
+                    1073741824:
+                      name_long_plural: gigabytes
+                      name_long_singular: gigabyte
+                      name_short_plural: GB
+                      name_short_singular: GB
+                    1099511627776:
+                      name_long_plural: terabytes
+                      name_long_singular: terabyte
+                      name_short_plural: TB
+                      name_short_singular: TB
+                    1125899906842624:
+                      name_long_plural: petabytes
+                      name_long_singular: petabyte
+                      name_short_plural: PB
+                      name_short_singular: PB
+            type:
+              default: '"recv"'
+              display: {}
+              required: false
+              type:
+                type_id: string
+        SendFileFlowOp:
+          id: SendFileFlowOp
+          properties:
+            count:
+              display:
+                description: The number of times this flowop will be executed.
+                name: count
+              required: false
+              type:
+                type_id: integer
+            dir:
+              default: '"./files"'
+              display:
+                description: 'This parameter identifies the directory from which the
+                  files will  be transferred. The directory is search recursively
+                  to generate a list of all readable files. Example: dir=/space'
+                name: dir
+              required: false
+              type:
+                type_id: string
+            nfiles:
+              default: '1'
+              display:
+                description: 'This parameter identifies the number of files that will
+                  be transferred with each call to sendfilev(3EXT). This is used as
+                  the 3rd argument to the sendfilev(3EXT). nfiles is assumed to be
+                  1 for the sendfile  flowop function. Example: nfiles=10'
+              required: false
+              type:
+                type_id: integer
+            rate:
+              display:
+                description: 'Experimental: This option causes uperf to execute this
+                  flowop at the specified rate for iterations or duration seconds.'
+                name: rate
+              required: false
+              type:
+                type_id: integer
+            size:
+              display:
+                description: 'This parameter identifies the chunk size for the transfer.
+                  Instead of sending the whole file, uperf will send size sized chunks
+                  one at a time. This is used only if nfiles=1. Unit: bytes'
+              required: false
+              type:
+                type_id: integer
+            type:
+              default: '"sendfile"'
+              display: {}
+              required: false
+              type:
+                type_id: string
+        SendFileVFlowOp:
+          id: SendFileVFlowOp
+          properties:
+            count:
+              display:
+                description: The number of times this flowop will be executed.
+                name: count
+              required: false
+              type:
+                type_id: integer
+            dir:
+              default: '"./files"'
+              display:
+                description: 'This parameter identifies the directory from which the
+                  files will  be transferred. The directory is search recursively
+                  to generate a list of all readable files. Example: dir=/space'
+                name: dir
+              required: false
+              type:
+                type_id: string
+            nfiles:
+              default: '1'
+              display:
+                description: 'This parameter identifies the number of files that will
+                  be transferred with each call to sendfilev(3EXT). This is used as
+                  the 3rd argument to the sendfilev(3EXT). nfiles is assumed to be
+                  1 for the sendfile  flowop function. Example: nfiles=10'
+              required: false
+              type:
+                type_id: integer
+            rate:
+              display:
+                description: 'Experimental: This option causes uperf to execute this
+                  flowop at the specified rate for iterations or duration seconds.'
+                name: rate
+              required: false
+              type:
+                type_id: integer
+            size:
+              display:
+                description: 'This parameter identifies the chunk size for the transfer.
+                  Instead of sending the whole file, uperf will send size sized chunks
+                  one at a time. This is used only if nfiles=1. Unit: bytes'
+              required: false
+              type:
+                type_id: integer
+            type:
+              default: '"sendfilev"'
+              display: {}
+              required: false
+              type:
+                type_id: string
+        SendtoFlowOp:
+          id: SendtoFlowOp
+          properties:
+            canfail:
+              default: 'false'
+              display:
+                description: Indicates that a failure for this flowop will not cause
+                  uperf to abort. This is espcially useful in UDP where a packet drop
+                  does not constitue a fatal error. This can be also be used for example,
+                  to test a SYN flood attack (Threads connect() repeatedly ignoring
+                  errors).
+                name: canfail
+              required: false
+              type:
+                type_id: bool
+            conn:
+              display:
+                description: "Every open connection is assigned a connection name.\n\
+                  \ Currently, the name can be any valid integer, however, uperf could\
+                  \ take a string in the future. conn identifies the connection to\
+                  \ use with this flowop. This connection name is thread private."
+                name: connection id
+              required: false
+              type:
+                type_id: integer
+            count:
+              display:
+                description: The number of times this flowop will be executed.
+                name: count
+              required: false
+              type:
+                type_id: integer
+            non_blocking:
+              default: 'false'
+              display:
+                description: Use non-blocking IO. The socket/file descriptor is set
+                  the NO_BLOCK flag.
+                name: non_blocking
+              required: false
+              type:
+                type_id: bool
+            poll_timeout:
+              display:
+                description: If this option is set, the thread will first poll for
+                  specified duration before trying to carry out the operation. A poll
+                  timeout is returned as an error back to uperf.
+                name: poll_timeout
+              required: false
+              type:
+                type_id: string
+            randsize_max:
+              display:
+                description: 'For when a random message size is desired, this sets
+                  the max random value, and the size parameter sets the minimum. Unit:
+                  bytes.'
+                name: randsize_max
+              required: false
+              type:
+                type_id: integer
+                units:
+                  base_unit:
+                    name_long_plural: bytes
+                    name_long_singular: byte
+                    name_short_plural: B
+                    name_short_singular: B
+                  multipliers:
+                    1024:
+                      name_long_plural: kilobytes
+                      name_long_singular: kilobyte
+                      name_short_plural: kB
+                      name_short_singular: kB
+                    1048576:
+                      name_long_plural: megabytes
+                      name_long_singular: megabyte
+                      name_short_plural: MB
+                      name_short_singular: MB
+                    1073741824:
+                      name_long_plural: gigabytes
+                      name_long_singular: gigabyte
+                      name_short_plural: GB
+                      name_short_singular: GB
+                    1099511627776:
+                      name_long_plural: terabytes
+                      name_long_singular: terabyte
+                      name_short_plural: TB
+                      name_short_singular: TB
+                    1125899906842624:
+                      name_long_plural: petabytes
+                      name_long_singular: petabyte
+                      name_short_plural: PB
+                      name_short_singular: PB
+            rate:
+              display:
+                description: 'Experimental: This option causes uperf to execute this
+                  flowop at the specified rate for iterations or duration seconds.'
+                name: rate
+              required: false
+              type:
+                type_id: integer
+            rsize:
+              display:
+                description: 'Receive size in bytes.
+
+                  For use with asymmetrical messages. For more contect, see description
+                  for "size" '
+                name: rsize
+              required: false
+              type:
+                type_id: integer
+                units:
+                  base_unit:
+                    name_long_plural: bytes
+                    name_long_singular: byte
+                    name_short_plural: B
+                    name_short_singular: B
+                  multipliers:
+                    1024:
+                      name_long_plural: kilobytes
+                      name_long_singular: kilobyte
+                      name_short_plural: kB
+                      name_short_singular: kB
+                    1048576:
+                      name_long_plural: megabytes
+                      name_long_singular: megabyte
+                      name_short_plural: MB
+                      name_short_singular: MB
+                    1073741824:
+                      name_long_plural: gigabytes
+                      name_long_singular: gigabyte
+                      name_short_plural: GB
+                      name_short_singular: GB
+                    1099511627776:
+                      name_long_plural: terabytes
+                      name_long_singular: terabyte
+                      name_short_plural: TB
+                      name_short_singular: TB
+                    1125899906842624:
+                      name_long_plural: petabytes
+                      name_long_singular: petabyte
+                      name_short_plural: PB
+                      name_short_singular: PB
+            size:
+              default: '64'
+              display:
+                description: "Unit: bytes\nAmount of data that is either read or written.\
+                  \ Uperf supports exchange of:\n - Fixed size messages\n - Asymmetrical\
+                  \ size messages\n - Random size messages\nFor fixed size messages,\
+                  \ the client and all servers used a sized fixed size for receives\
+                  \ and transmits. For asymmetrical messages, the slaves use the size\
+                  \ specified by the rszize parameter. The master still uses the size\
+                  \ parameter. For a random sized message, the a uniformly distributed\
+                  \ value between the user specifed min and max is used by the transmitting\
+                  \ side, and the receiving side uses the max as the message size.\
+                  \ Example: size=64 for 64 bytes per packet"
+                name: size
+              required: false
+              type:
+                type_id: integer
+                units:
+                  base_unit:
+                    name_long_plural: bytes
+                    name_long_singular: byte
+                    name_short_plural: B
+                    name_short_singular: B
+                  multipliers:
+                    1024:
+                      name_long_plural: kilobytes
+                      name_long_singular: kilobyte
+                      name_short_plural: kB
+                      name_short_singular: kB
+                    1048576:
+                      name_long_plural: megabytes
+                      name_long_singular: megabyte
+                      name_short_plural: MB
+                      name_short_singular: MB
+                    1073741824:
+                      name_long_plural: gigabytes
+                      name_long_singular: gigabyte
+                      name_short_plural: GB
+                      name_short_singular: GB
+                    1099511627776:
+                      name_long_plural: terabytes
+                      name_long_singular: terabyte
+                      name_short_plural: TB
+                      name_short_singular: TB
+                    1125899906842624:
+                      name_long_plural: petabytes
+                      name_long_singular: petabyte
+                      name_short_plural: PB
+                      name_short_singular: PB
+            type:
+              default: '"sendto"'
+              display: {}
+              required: false
+              type:
+                type_id: string
+        ThinkFlowOp:
+          id: ThinkFlowOp
+          properties:
+            count:
+              display:
+                description: The number of times this flowop will be executed.
+                name: count
+              required: false
+              type:
+                type_id: integer
+            duration:
+              display: {}
+              required: false
+              type:
+                type_id: string
+            rate:
+              display:
+                description: 'Experimental: This option causes uperf to execute this
+                  flowop at the specified rate for iterations or duration seconds.'
+                name: rate
+              required: false
+              type:
+                type_id: integer
+            think_type:
+              default: '"idle"'
+              display:
+                description: The type of think type, either idle, whichsleeps the
+                  CPU threads, or busy, which uses CPU time.
+                name: Think Type
+              required: false
+              type:
+                type_id: enum_string
+                values:
+                  busy:
+                    name: BUSY
+                  idle:
+                    name: IDLE
+            type:
+              default: '"think"'
+              display: {}
+              required: false
+              type:
+                type_id: string
+        WriteFlowOp:
+          id: WriteFlowOp
+          properties:
+            canfail:
+              default: 'false'
+              display:
+                description: Indicates that a failure for this flowop will not cause
+                  uperf to abort. This is espcially useful in UDP where a packet drop
+                  does not constitue a fatal error. This can be also be used for example,
+                  to test a SYN flood attack (Threads connect() repeatedly ignoring
+                  errors).
+                name: canfail
+              required: false
+              type:
+                type_id: bool
+            conn:
+              display:
+                description: "Every open connection is assigned a connection name.\n\
+                  \ Currently, the name can be any valid integer, however, uperf could\
+                  \ take a string in the future. conn identifies the connection to\
+                  \ use with this flowop. This connection name is thread private."
+                name: connection id
+              required: false
+              type:
+                type_id: integer
+            count:
+              display:
+                description: The number of times this flowop will be executed.
+                name: count
+              required: false
+              type:
+                type_id: integer
+            non_blocking:
+              default: 'false'
+              display:
+                description: Use non-blocking IO. The socket/file descriptor is set
+                  the NO_BLOCK flag.
+                name: non_blocking
+              required: false
+              type:
+                type_id: bool
+            poll_timeout:
+              display:
+                description: If this option is set, the thread will first poll for
+                  specified duration before trying to carry out the operation. A poll
+                  timeout is returned as an error back to uperf.
+                name: poll_timeout
+              required: false
+              type:
+                type_id: string
+            randsize_max:
+              display:
+                description: 'For when a random message size is desired, this sets
+                  the max random value, and the size parameter sets the minimum. Unit:
+                  bytes.'
+                name: randsize_max
+              required: false
+              type:
+                type_id: integer
+                units:
+                  base_unit:
+                    name_long_plural: bytes
+                    name_long_singular: byte
+                    name_short_plural: B
+                    name_short_singular: B
+                  multipliers:
+                    1024:
+                      name_long_plural: kilobytes
+                      name_long_singular: kilobyte
+                      name_short_plural: kB
+                      name_short_singular: kB
+                    1048576:
+                      name_long_plural: megabytes
+                      name_long_singular: megabyte
+                      name_short_plural: MB
+                      name_short_singular: MB
+                    1073741824:
+                      name_long_plural: gigabytes
+                      name_long_singular: gigabyte
+                      name_short_plural: GB
+                      name_short_singular: GB
+                    1099511627776:
+                      name_long_plural: terabytes
+                      name_long_singular: terabyte
+                      name_short_plural: TB
+                      name_short_singular: TB
+                    1125899906842624:
+                      name_long_plural: petabytes
+                      name_long_singular: petabyte
+                      name_short_plural: PB
+                      name_short_singular: PB
+            rate:
+              display:
+                description: 'Experimental: This option causes uperf to execute this
+                  flowop at the specified rate for iterations or duration seconds.'
+                name: rate
+              required: false
+              type:
+                type_id: integer
+            rsize:
+              display:
+                description: 'Receive size in bytes.
+
+                  For use with asymmetrical messages. For more contect, see description
+                  for "size" '
+                name: rsize
+              required: false
+              type:
+                type_id: integer
+                units:
+                  base_unit:
+                    name_long_plural: bytes
+                    name_long_singular: byte
+                    name_short_plural: B
+                    name_short_singular: B
+                  multipliers:
+                    1024:
+                      name_long_plural: kilobytes
+                      name_long_singular: kilobyte
+                      name_short_plural: kB
+                      name_short_singular: kB
+                    1048576:
+                      name_long_plural: megabytes
+                      name_long_singular: megabyte
+                      name_short_plural: MB
+                      name_short_singular: MB
+                    1073741824:
+                      name_long_plural: gigabytes
+                      name_long_singular: gigabyte
+                      name_short_plural: GB
+                      name_short_singular: GB
+                    1099511627776:
+                      name_long_plural: terabytes
+                      name_long_singular: terabyte
+                      name_short_plural: TB
+                      name_short_singular: TB
+                    1125899906842624:
+                      name_long_plural: petabytes
+                      name_long_singular: petabyte
+                      name_short_plural: PB
+                      name_short_singular: PB
+            size:
+              default: '64'
+              display:
+                description: "Unit: bytes\nAmount of data that is either read or written.\
+                  \ Uperf supports exchange of:\n - Fixed size messages\n - Asymmetrical\
+                  \ size messages\n - Random size messages\nFor fixed size messages,\
+                  \ the client and all servers used a sized fixed size for receives\
+                  \ and transmits. For asymmetrical messages, the slaves use the size\
+                  \ specified by the rszize parameter. The master still uses the size\
+                  \ parameter. For a random sized message, the a uniformly distributed\
+                  \ value between the user specifed min and max is used by the transmitting\
+                  \ side, and the receiving side uses the max as the message size.\
+                  \ Example: size=64 for 64 bytes per packet"
+                name: size
+              required: false
+              type:
+                type_id: integer
+                units:
+                  base_unit:
+                    name_long_plural: bytes
+                    name_long_singular: byte
+                    name_short_plural: B
+                    name_short_singular: B
+                  multipliers:
+                    1024:
+                      name_long_plural: kilobytes
+                      name_long_singular: kilobyte
+                      name_short_plural: kB
+                      name_short_singular: kB
+                    1048576:
+                      name_long_plural: megabytes
+                      name_long_singular: megabyte
+                      name_short_plural: MB
+                      name_short_singular: MB
+                    1073741824:
+                      name_long_plural: gigabytes
+                      name_long_singular: gigabyte
+                      name_short_plural: GB
+                      name_short_singular: GB
+                    1099511627776:
+                      name_long_plural: terabytes
+                      name_long_singular: terabyte
+                      name_short_plural: TB
+                      name_short_singular: TB
+                    1125899906842624:
+                      name_long_plural: petabytes
+                      name_long_singular: petabyte
+                      name_short_plural: PB
+                      name_short_singular: PB
+            type:
+              default: '"write"'
+              display: {}
+              required: false
+              type:
+                type_id: string
+      root: Profile
+    outputs:
+      error:
+        error: false
+        schema:
+          objects:
+            UPerfError:
+              id: UPerfError
+              properties:
+                error:
+                  display: {}
+                  required: true
+                  type:
+                    type_id: string
+          root: UPerfError
+      success:
+        error: false
+        schema:
+          objects:
+            UPerfRawData:
+              id: UPerfRawData
+              properties:
+                nr_bytes:
+                  display: {}
+                  required: true
+                  type:
+                    type_id: integer
+                nr_ops:
+                  display: {}
+                  required: true
+                  type:
+                    type_id: integer
+                ns_per_op:
+                  display: {}
+                  required: true
+                  type:
+                    type_id: integer
+            UPerfResults:
+              id: UPerfResults
+              properties:
+                profile_name:
+                  display:
+                    description: The name of the profile that was run.
+                    name: profile_name
+                  required: true
+                  type:
+                    type_id: string
+                timeseries_data:
+                  display:
+                    description: 'Map of the transaction ID to a map of timestamp
+                      to UPerfRawData.
+
+                      This result varies by input profile, due to it correlating to
+                      the transactions in the profile. It ignores zero initial results.'
+                    name: timeseries_data
+                  required: true
+                  type:
+                    keys:
+                      type_id: integer
+                    type_id: map
+                    values:
+                      keys:
+                        type_id: integer
+                      type_id: map
+                      values:
+                        id: UPerfRawData
+                        type_id: ref
+          root: UPerfResults
+  uperf_server:
+    display:
+      description: Runs the passive UPerf server to allow benchmarks between the client
+        and this server
+      name: UPerf Server
+    id: uperf_server
+    input:
+      objects:
+        UPerfServerParams:
+          id: UPerfServerParams
+          properties:
+            run_duration:
+              default: '60'
+              display:
+                description: How long the server should run before terminating. 0
+                  for indefinite.
+                name: run_duration
+              required: false
+              type:
+                type_id: integer
+      root: UPerfServerParams
+    outputs:
+      error:
+        error: false
+        schema:
+          objects:
+            UPerfServerError:
+              id: UPerfServerError
+              properties:
+                error:
+                  display: {}
+                  required: true
+                  type:
+                    type_id: string
+                error_code:
+                  display: {}
+                  required: true
+                  type:
+                    type_id: integer
+          root: UPerfServerError
+      success:
+        error: false
+        schema:
+          objects:
+            UPerfServerResults:
+              id: UPerfServerResults
+              properties: {}
+          root: UPerfServerResults
+    signal_emitters: {}
+    signal_handlers:
+      cancel:
+        data_schema:
+          objects:
+            cancelInput:
+              id: cancelInput
+              properties: {}
+          root: cancelInput
+        display:
+          description: The signal that instructs the plugin to finish execution gracefully.
+          name: Step Cancel
+        id: cancel
