@@ -2,13 +2,13 @@
 
 [[package]]
 name = "arcaflow-plugin-sdk"
-version = "0.14.0.dev1"
+version = "0.14.0b1"
 description = "Plugin SDK for Python for the Arcaflow workflow engine"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "arcaflow_plugin_sdk-0.14.0.dev1-py3-none-any.whl", hash = "sha256:28a31b2a92e60b4a858873fbce2e1d7f3edd851b68f6f4bb155a1c8e76e8dff5"},
-    {file = "arcaflow_plugin_sdk-0.14.0.dev1.tar.gz", hash = "sha256:34a0aae384bcd23d45cb0283cb9058c0156827dd8025e952312743a74808ff95"},
+    {file = "arcaflow_plugin_sdk-0.14.0b1-py3-none-any.whl", hash = "sha256:c995bb66fd0e0134447e46dd8615d4aee954aa73319741f603c2ba90c17f9c43"},
+    {file = "arcaflow_plugin_sdk-0.14.0b1.tar.gz", hash = "sha256:4f343475775316a577a3feef234d1ea8d90b01c88b343eac88f7e07306d1d95c"},
 ]
 
 [package.dependencies]
@@ -323,4 +323,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "8fdf71255496523e964d3511651000b35ae8241798a8c6e90d555c923090fe2c"
+content-hash = "5c094d381322012abb06e0002e9e61bd1fe813c25740de61f53beb8a24dd0d3a"
