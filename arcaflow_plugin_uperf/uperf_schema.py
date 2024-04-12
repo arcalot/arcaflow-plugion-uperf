@@ -427,7 +427,7 @@ class ProfileTransaction:
                 typing.Annotated[NOPFlowOp, annotations.discriminator_value("NOP")],
                 typing.Annotated[ThinkFlowOp, annotations.discriminator_value("think")],
             ],
-            annotations.discriminator("type"),
+            annotations.discriminator("type", discriminator_inlined=True),
         ]
     ] = field(metadata={"name": "flowops", "description": type_descriptions})
     iterations: typing.Optional[int] = field(
