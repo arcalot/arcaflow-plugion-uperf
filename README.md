@@ -108,7 +108,10 @@ Runs uperf locally
 
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>Profile</td></tr>
-<tr><th>Properties</th><td><details><summary>groups (<code>list[<code>reference[ProfileGroup]</code>]</code>)</summary>
+<tr><th>Properties</th><td><details><summary>comm_port (<code>int</code>)</summary>
+                <table><tbody><tr><th>Name:</th><td>comm_port</td></tr><tr><th>Description:</th><td>The port to connect to on the server. Necessary for proper client-server communication.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20000</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+</tbody></table>
+            </details><details><summary>groups (<code>list[<code>reference[ProfileGroup]</code>]</code>)</summary>
                 <table><tbody><tr><th>Name:</th><td>groups</td></tr><tr><th>Description:</th><td>A list of groups in the profile.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>list[<code>reference[ProfileGroup]</code>]</code></td><tr><td colspan="2">
     <details>
         <summary>List items</summary>
@@ -125,7 +128,7 @@ Runs uperf locally
         </details><details><summary>engine (<code>string</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>engine</td></tr><tr><th>Description:</th><td>The SSL Engine used by OpenSSL</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>port (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>port</td></tr><tr><th>Description:</th><td>The port of the remote host server</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20000</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>port</td></tr><tr><th>Description:</th><td>The port used to establish the connection. This is not the same as the comm_port.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20001</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>protocol (<code>enum[string]</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>protocol</td></tr><tr><th>Description:</th><td>The protocol used to connect to the remote host.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;tcp&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
@@ -156,7 +159,7 @@ This parameter is used to set SO_SNDBUF, SO_RCVBUF flags using setsocktopt()</td
         </details><details><summary>engine (<code>string</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>engine</td></tr><tr><th>Description:</th><td>The SSL Engine used by OpenSSL</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>port (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>port</td></tr><tr><th>Description:</th><td>The port of the remote host server</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20000</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>port</td></tr><tr><th>Description:</th><td>The port used to establish the connection. This is not the same as the comm_port.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20001</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>protocol (<code>enum[string]</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>protocol</td></tr><tr><th>Description:</th><td>The protocol used to connect to the remote host.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;tcp&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
@@ -206,7 +209,10 @@ This parameter is used to set SO_SNDBUF, SO_RCVBUF flags using setsocktopt()</td
         </details></td></tr>
 </tbody></table>
         </details><details><summary>Profile (<code>object</code>)</summary>
-            <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>groups (<code>list[<code>reference[ProfileGroup]</code>]</code>)</summary>
+            <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>comm_port (<code>int</code>)</summary>
+        <table><tbody><tr><th>Name:</th><td>comm_port</td></tr><tr><th>Description:</th><td>The port to connect to on the server. Necessary for proper client-server communication.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20000</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+</tbody></table>
+        </details><details><summary>groups (<code>list[<code>reference[ProfileGroup]</code>]</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>groups</td></tr><tr><th>Description:</th><td>A list of groups in the profile.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>list[<code>reference[ProfileGroup]</code>]</code></td><tr><td colspan="2">
     <details>
         <summary>List items</summary>
@@ -580,12 +586,18 @@ Runs the passive UPerf server to allow benchmarks between the client and this se
 
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>UPerfServerParams</td></tr>
-<tr><th>Properties</th><td><details><summary>run_duration (<code>int</code>)</summary>
+<tr><th>Properties</th><td><details><summary>comm_port (<code>int</code>)</summary>
+                <table><tbody><tr><th>Name:</th><td>comm_port</td></tr><tr><th>Description:</th><td>The communication port of the this server.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20000</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+</tbody></table>
+            </details><details><summary>run_duration (<code>int</code>)</summary>
                 <table><tbody><tr><th>Name:</th><td>run_duration</td></tr><tr><th>Description:</th><td>How long the server should run before terminating. 0 for indefinite.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>60</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>UPerfServerParams (<code>object</code>)</summary>
-            <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>run_duration (<code>int</code>)</summary>
+            <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>comm_port (<code>int</code>)</summary>
+        <table><tbody><tr><th>Name:</th><td>comm_port</td></tr><tr><th>Description:</th><td>The communication port of the this server.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20000</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+</tbody></table>
+        </details><details><summary>run_duration (<code>int</code>)</summary>
         <table><tbody><tr><th>Name:</th><td>run_duration</td></tr><tr><th>Description:</th><td>How long the server should run before terminating. 0 for indefinite.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>60</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details></td></tr>
