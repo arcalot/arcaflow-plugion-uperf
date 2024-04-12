@@ -92,13 +92,6 @@ class ProfileFlowOpConnection(ProfileFlowOpCommon):
             ),
         },
     )
-    port: int = field(
-        default=20000,
-        metadata={
-            "name": "port",
-            "description": "The port of the remote host server",
-        },
-    )
     protocol: IProtocol = field(
         default=IProtocol.TCP,
         metadata={
@@ -129,6 +122,13 @@ class ProfileFlowOpConnection(ProfileFlowOpCommon):
         metadata={
             "name": "engine",
             "description": "The SSL Engine used by OpenSSL",
+        },
+    )
+    port: int = field(
+        default=20001,
+        metadata={
+            "name": "port",
+            "description": "The port used to establish the connection. This is not the same as the comm_port.",
         },
     )
     # TODO: cc algorithm as used in https://github.com/uperf/uperf/blob/master/workloads/tcp-change-cc.xml # noqa: E501
@@ -493,6 +493,13 @@ class Profile:
             "description": "A list of groups in the profile.",
         }
     )
+    comm_port: int = field(
+        default=20000,
+        metadata={
+            "name": "comm_port",
+            "description": "The port to connect to on the server. Necessary for proper client-server communication.",
+        },
+    )
 
 
 # Params and results
@@ -506,6 +513,13 @@ class UPerfServerParams:
             "name": "run_duration",
             "description": "How long the server should run before terminating."
             " 0 for indefinite.",
+        },
+    )
+    comm_port: int = field(
+        default=20000,
+        metadata={
+            "name": "comm_port",
+            "description": "The communication port of the this server.",
         },
     )
 
