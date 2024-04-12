@@ -128,7 +128,8 @@ class ProfileFlowOpConnection(ProfileFlowOpCommon):
         default=20001,
         metadata={
             "name": "port",
-            "description": "The port used to establish the connection. This is not the same as the comm_port.",
+            "description": "The port used to establish the connection."
+                           " This is not the same as the comm_port.",
         },
     )
     # TODO: cc algorithm as used in https://github.com/uperf/uperf/blob/master/workloads/tcp-change-cc.xml # noqa: E501
@@ -497,7 +498,8 @@ class Profile:
         default=20000,
         metadata={
             "name": "comm_port",
-            "description": "The port to connect to on the server. Necessary for proper client-server communication.",
+            "description": "The port to connect to on the server. "
+                           "Necessary for proper client-server communication.",
         },
     )
 

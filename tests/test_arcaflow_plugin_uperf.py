@@ -125,7 +125,10 @@ class ExamplePluginTest(unittest.TestCase):
                 params=simple_profile,
             )
         self.assertEqual("error", output_id, "test should fail due to port in use.")
-        self.assertIn("TCP: Cannot connect to 127.0.0.1:30000 Connection refused", output_obj.error),
+        self.assertIn(
+            "TCP: Cannot connect to 127.0.0.1:30000 Connection refused",
+            output_obj.error,
+        ),
 
         # --------------------------
         # Test an actual working scenario
