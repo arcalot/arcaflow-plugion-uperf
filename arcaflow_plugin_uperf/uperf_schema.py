@@ -128,8 +128,9 @@ class ProfileFlowOpConnection(ProfileFlowOpCommon):
         default=20001,
         metadata={
             "name": "port",
-            "description": "The port used to establish the connection."
-                           " This is not the same as the comm_port.",
+            "description": "The port used to establish the connection used by "
+                           "the FlowOp. This is not the same as the comm_port.\n"
+                           "UPerf does not have any documentation on this.",
         },
     )
     # TODO: cc algorithm as used in https://github.com/uperf/uperf/blob/master/workloads/tcp-change-cc.xml # noqa: E501
@@ -498,8 +499,10 @@ class Profile:
         default=20000,
         metadata={
             "name": "comm_port",
-            "description": "The port to connect to on the server. "
-                           "Necessary for proper client-server communication.",
+            "description": "The port to connect to on the UPerf server."
+                           " Necessary for proper client-server (master-slave)"
+                           " communication. Must match the value specified "
+                           " on the UPerf server (slave).",
         },
     )
 
@@ -513,7 +516,7 @@ class UPerfServerParams:
         default=60,
         metadata={
             "name": "run_duration",
-            "description": "How long the server should run before terminating."
+            "description": "How long the UPerf server should run before terminating."
             " 0 for indefinite.",
         },
     )
@@ -521,7 +524,10 @@ class UPerfServerParams:
         default=20000,
         metadata={
             "name": "comm_port",
-            "description": "The communication port of the this server.",
+            "description": "The master communication port to open for "
+                           "this UPerf server. This is used for initial "
+                           "communication with the server (slave).\n"
+                           "Must match the value specified in the client.",
         },
     )
 
