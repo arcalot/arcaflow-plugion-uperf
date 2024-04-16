@@ -100,7 +100,7 @@ class ExamplePluginTest(unittest.TestCase):
 
         # --------------------------
         # Test for error when port is in use
-        # Bind to port first to cause error when the UPerf server attempts to bind to it.
+        # Bind to port first to cause error when the UPerf server attempts to bind to it
         server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server.bind(("127.0.0.1", 30000))
         server.listen(8)
