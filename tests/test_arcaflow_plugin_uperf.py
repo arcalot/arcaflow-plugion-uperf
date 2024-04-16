@@ -46,7 +46,7 @@ sample_profile_expected = """<?xml version='1.0' encoding='us-ascii'?>
 <profile name="test">
   <group nthreads="1">
     <transaction iterations="1">
-      <flowop type="connect" options="remotehost=127.0.0.1 port=20001 protocol=tcp tcp_nodelay wndsz=5120b" />
+      <flowop type="connect" options="remotehost=127.0.0.1 protocol=tcp tcp_nodelay wndsz=5120b" />
     </transaction>
     <transaction duration="50ms">
       <flowop type="write" options="size=90b" />
@@ -100,7 +100,7 @@ class ExamplePluginTest(unittest.TestCase):
 
         # --------------------------
         # Test for error when port is in use
-        # Make socket for port be in use.
+        # Bind to port first to cause error when the UPerf server attempts to bind to it.
         server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server.bind(("127.0.0.1", 30000))
         server.listen(8)

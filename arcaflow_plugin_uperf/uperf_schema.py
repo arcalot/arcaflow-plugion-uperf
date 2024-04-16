@@ -124,22 +124,21 @@ class ProfileFlowOpConnection(ProfileFlowOpCommon):
             "description": "The SSL Engine used by OpenSSL",
         },
     )
-    port: int = field(
-        default=20001,
-        metadata={
-            "name": "port",
-            "description": "The port used to establish the connection used by "
+    port: typing.Annotated[
+        typing.Optional[int],
+        schema.name("port"),
+        schema.description("The port used to establish the connection used by "
                            "the FlowOp. This is not the same as the comm_port.\n"
-                           "UPerf does not have any documentation on this.",
-        },
-    )
+                           "When set to None, UPerf dynamically sets the port.")
+    ] = None
     # TODO: cc algorithm as used in https://github.com/uperf/uperf/blob/master/workloads/tcp-change-cc.xml # noqa: E501
     # TODO: stack as used in https://github.com/uperf/uperf/blob/master/workloads/tcp-freebsd-change-stack.xml # noqa: E501
 
     def get_options(self):
         options = ProfileFlowOpCommon.get_options(self)
         options.append(f"remotehost={self.remotehost}")
-        options.append(f"port={self.port}")
+        if self.port is not None:
+            options.append(f"port={self.port}")
         options.append(f"protocol={self.protocol.value}")
         if self.tcp_nodelay:
             options.append("tcp_nodelay")
@@ -499,10 +498,10 @@ class Profile:
         default=20000,
         metadata={
             "name": "comm_port",
-            "description": "The port to connect to on the UPerf server."
-                           " Necessary for proper client-server (master-slave)"
-                           " communication. Must match the value specified "
-                           " on the UPerf server (slave).",
+            "description": "The master communication port to connect to on "
+                           "the UPerf server. This is used for orchestration "
+                           "communication with the server (slave).\n"
+                           "Must match the value specified in the server.",
         },
     )
 
@@ -525,8 +524,9 @@ class UPerfServerParams:
         metadata={
             "name": "comm_port",
             "description": "The master communication port to open for "
-                           "this UPerf server. This is used for initial "
-                           "communication with the server (slave).\n"
+                           "this UPerf server. This is used for orchestration "
+                           "communication between the UPerf server (slave) and "
+                           "the UPerf client (master).\n"
                            "Must match the value specified in the client.",
         },
     )
