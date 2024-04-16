@@ -499,7 +499,7 @@ class Profile:
         metadata={
             "name": "comm_port",
             "description": "The master communication port to connect to on "
-                           "the UPerf server. This is used for orchestration "
+                           "the UPerf server. This is used for orchestrating "
                            "communication with the server (slave).\n"
                            "Must match the value specified in the server.",
         },
@@ -524,7 +524,7 @@ class UPerfServerParams:
         metadata={
             "name": "comm_port",
             "description": "The master communication port to open for "
-                           "this UPerf server. This is used for orchestration "
+                           "this UPerf server. This is used for orchestrating "
                            "communication between the UPerf server (slave) and "
                            "the UPerf client (master).\n"
                            "Must match the value specified in the client.",
