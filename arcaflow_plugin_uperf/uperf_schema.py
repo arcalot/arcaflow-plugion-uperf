@@ -92,13 +92,6 @@ class ProfileFlowOpConnection(ProfileFlowOpCommon):
             ),
         },
     )
-    port: int = field(
-        default=20000,
-        metadata={
-            "name": "port",
-            "description": "The port of the remote host server",
-        },
-    )
     protocol: IProtocol = field(
         default=IProtocol.TCP,
         metadata={
@@ -131,13 +124,21 @@ class ProfileFlowOpConnection(ProfileFlowOpCommon):
             "description": "The SSL Engine used by OpenSSL",
         },
     )
+    port: typing.Annotated[
+        typing.Optional[int],
+        schema.name("port"),
+        schema.description("The port used to establish the connection used by "
+                           "the FlowOp. This is not the same as the comm_port.\n"
+                           "When set to None, UPerf dynamically sets the port.")
+    ] = None
     # TODO: cc algorithm as used in https://github.com/uperf/uperf/blob/master/workloads/tcp-change-cc.xml # noqa: E501
     # TODO: stack as used in https://github.com/uperf/uperf/blob/master/workloads/tcp-freebsd-change-stack.xml # noqa: E501
 
     def get_options(self):
         options = ProfileFlowOpCommon.get_options(self)
         options.append(f"remotehost={self.remotehost}")
-        options.append(f"port={self.port}")
+        if self.port is not None:
+            options.append(f"port={self.port}")
         options.append(f"protocol={self.protocol.value}")
         if self.tcp_nodelay:
             options.append("tcp_nodelay")
@@ -493,6 +494,16 @@ class Profile:
             "description": "A list of groups in the profile.",
         }
     )
+    comm_port: int = field(
+        default=20000,
+        metadata={
+            "name": "comm_port",
+            "description": "The master communication port to connect to on "
+                           "the UPerf server. This is used for orchestrating "
+                           "communication with the server (slave).\n"
+                           "Must match the value specified in the server.",
+        },
+    )
 
 
 # Params and results
@@ -504,8 +515,19 @@ class UPerfServerParams:
         default=60,
         metadata={
             "name": "run_duration",
-            "description": "How long the server should run before terminating."
+            "description": "How long the UPerf server should run before terminating."
             " 0 for indefinite.",
+        },
+    )
+    comm_port: int = field(
+        default=20000,
+        metadata={
+            "name": "comm_port",
+            "description": "The master communication port to open for "
+                           "this UPerf server. This is used for orchestrating "
+                           "communication between the UPerf server (slave) and "
+                           "the UPerf client (master).\n"
+                           "Must match the value specified in the client.",
         },
     )
 

@@ -9,6 +9,7 @@ from arcaflow_plugin_sdk import plugin
 
 simple_profile = uperf_schema.Profile(
     name="test",
+    comm_port=30000,
     groups=[
         uperf_schema.ProfileGroup(
             nthreads=1,
@@ -16,8 +17,8 @@ simple_profile = uperf_schema.Profile(
                 uperf_schema.ProfileTransaction(
                     iterations=1,
                     flowops=[
-                        uperf_schema.AcceptFlowOp(
-                            type="accept",
+                        uperf_schema.ConnectFlowOp(
+                            type="connect",
                             remotehost="127.0.0.1",
                             protocol=uperf_schema.IProtocol.TCP,
                             wndsz=5120,
@@ -45,7 +46,7 @@ sample_profile_expected = """<?xml version='1.0' encoding='us-ascii'?>
 <profile name="test">
   <group nthreads="1">
     <transaction iterations="1">
-      <flowop type="accept" options="remotehost=127.0.0.1 port=20000 protocol=tcp tcp_nodelay wndsz=5120b" />
+      <flowop type="connect" options="remotehost=127.0.0.1 protocol=tcp tcp_nodelay wndsz=5120b" />
     </transaction>
     <transaction duration="50ms">
       <flowop type="write" options="size=90b" />
@@ -82,11 +83,12 @@ class ExamplePluginTest(unittest.TestCase):
         with open(uperf_plugin.profile_path, "r", encoding="us-ascii") as file:
             generated_file = file.read()
         uperf_plugin.clean_profile()
+        self.maxDiff = None
         self.assertEqual(sample_profile_expected, generated_file)
 
     def test_functional(self):
-        # Test the server succesfully exiting
-        server_1sec_input = uperf_plugin.UPerfServerParams(1)
+        # Test the server successfully exiting
+        server_1sec_input = uperf_plugin.UPerfServerParams(1, 30000)
         step_object = uperf_plugin.UperfServerStep()
         output_id, _ = step_object.run_uperf_server(
             run_id=self.id() + "_plugin_server_ci",
@@ -98,9 +100,9 @@ class ExamplePluginTest(unittest.TestCase):
 
         # --------------------------
         # Test for error when port is in use
-        # Make socket for port be in use.
+        # Bind to port first to cause error when the UPerf server attempts to bind to it
         server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        server.bind(("127.0.0.1", 20000))
+        server.bind(("127.0.0.1", 30000))
         server.listen(8)
         server.setblocking(False)
         # Create the step object
@@ -112,7 +114,7 @@ class ExamplePluginTest(unittest.TestCase):
         )
         server.close()
 
-        self.assertEqual("error", output_id)
+        self.assertEqual("error", output_id, "test should fail due to port in use.")
 
         # --------------------------
         # Test the client failing due to no server
@@ -122,13 +124,11 @@ class ExamplePluginTest(unittest.TestCase):
                 run_id=self.id() + "_plugin_client_ci",
                 params=simple_profile,
             )
-        self.assertEqual("error", output_id)
-        self.assertEqual(
-            1,
-            output_obj.error.count(
-                "TCP: Cannot connect to 127.0.0.1:20000 Connection refused"
-            ),
-        )
+        self.assertEqual("error", output_id, "test should fail due to port in use.")
+        self.assertIn(
+            "TCP: Cannot connect to 127.0.0.1:30000 Connection refused",
+            output_obj.error,
+        ),
 
         # --------------------------
         # Test an actual working scenario

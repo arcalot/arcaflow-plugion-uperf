@@ -1,0 +1,21 @@
+# yaml-language-server:$schema=uperf.input.schema.json
+
+name: "iperf3"
+comm_port: 30000
+groups:
+  - nthreads: 1
+    transactions:
+      - iterations: 1
+        flowops:
+          - type: "connect"
+            remotehost: "server"
+            port: 30001
+            protocol: "tcp"
+      - duration: "30s"
+        flowops:
+          - type: "write"
+            count: 10
+            size: 8000
+      - iterations: 1
+        flowops:
+          - type: "disconnect"

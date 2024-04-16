@@ -77,7 +77,7 @@ def start_client(params: Profile):
     # profile.
     # Note: uperf calls this 'master'
     return subprocess.Popen(
-        ["uperf", "-vaR", "-i", "1", "-m", profile_path],
+        ["uperf", "-vaR", "-i", "1", "-P", str(params.comm_port), "-m", profile_path],
         stdout=subprocess.PIPE,
         cwd=os.getcwd(),
     )
@@ -172,7 +172,7 @@ class UperfServerStep:
         # Start the passive server
         # Note: Uperf calls it 'slave'
         process = subprocess.Popen(
-            ["uperf", "-s"],
+            ["uperf", "-s", "-P", str(params.comm_port)],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
         )
