@@ -9,7 +9,7 @@ packages = [{include = "uperf_plugin.py", from="./arcaflow_plugin_uperf"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-arcaflow-plugin-sdk = "~0.14.0b1"
+arcaflow-plugin-sdk = "~0.14.0-beta.1"
 
 
 [tool.poetry.dev-dependencies]
