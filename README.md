@@ -109,92 +109,92 @@ Runs uperf locally
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>Profile</td></tr>
 <tr><th>Properties</th><td><details><summary>comm_port (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>comm_port</td></tr><tr><th>Description:</th><td>The master communication port to connect to on the UPerf server. This is used for orchestrating communication with the server (slave).
+                <table><tbody><tr><th>Name:</th><td>comm_port</td></tr><tr><th>Description:</th><td width="500">The master communication port to connect to on the UPerf server. This is used for orchestrating communication with the server (slave).
 Must match the value specified in the server.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20000</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>groups (<code>list[<code>reference[ProfileGroup]</code>]</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>groups</td></tr><tr><th>Description:</th><td>A list of groups in the profile.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>list[<code>reference[ProfileGroup]</code>]</code></td><tr><td colspan="2">
+                <table><tbody><tr><th>Name:</th><td>groups</td></tr><tr><th>Description:</th><td width="500">A list of groups in the profile.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>list[<code>reference[ProfileGroup]</code>]</code></td><tr><td colspan="2">
     <details>
         <summary>List items</summary>
         <table><tbody><tr><th>Type:</th><td><code>reference[ProfileGroup]</code></td><tr><th>Referenced object:</th><td>ProfileGroup</td></tr></tbody></table>
     </details>
 </td></tr></tbody></table>
             </details><details><summary>name (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>name</td></tr><tr><th>Description:</th><td>The name you assign to the profile. Does not change the profile&#39;s behavior.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+                <table><tbody><tr><th>Name:</th><td>name</td></tr><tr><th>Description:</th><td width="500">The name you assign to the profile. Does not change the profile&#39;s behavior.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>AcceptFlowOp (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>count (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td>The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td width="500">The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>engine (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>engine</td></tr><tr><th>Description:</th><td>The SSL Engine used by OpenSSL</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>engine</td></tr><tr><th>Description:</th><td width="500">The SSL Engine used by OpenSSL</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>port (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>port</td></tr><tr><th>Description:</th><td>The port used to establish the connection used by the FlowOp. This is not the same as the comm_port.
+        <table><tbody><tr><th>Name:</th><td>port</td></tr><tr><th>Description:</th><td width="500">The port used to establish the connection used by the FlowOp. This is not the same as the comm_port.
 When set to None, UPerf dynamically sets the port.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>protocol (<code>enum[string]</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>protocol</td></tr><tr><th>Description:</th><td>The protocol used to connect to the remote host.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;tcp&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
+        <table><tbody><tr><th>Name:</th><td>protocol</td></tr><tr><th>Description:</th><td width="500">The protocol used to connect to the remote host.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;tcp&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
         <details><summary>Values</summary>
             <ul><li><strong><code>sctp</code>:</strong> SCTP</li><li><strong><code>ssl</code>:</strong> SSL</li><li><strong><code>tcp</code>:</strong> TCP</li><li><strong><code>udp</code>:</strong> UDP</li><li><strong><code>vsock</code>:</strong> VSOCK</li></ul>
         </details>
     </td>
 </tr></tbody></table>
         </details><details><summary>rate (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td>Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td width="500">Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>remotehost (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>remotehost</td></tr><tr><th>Description:</th><td>The remote host server that we need to connect or accept connection from</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;127.0.0.1&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>remotehost</td></tr><tr><th>Description:</th><td width="500">The remote host server that we need to connect or accept connection from</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;127.0.0.1&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>tcp_nodelay (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>tcp_nodelay</td></tr><tr><th>Description:</th><td>Sets the TCP_NODELAY socket option.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>tcp_nodelay</td></tr><tr><th>Description:</th><td width="500">Sets the TCP_NODELAY socket option.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>type (<code>string</code>)</summary>
         <table><tbody><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;accept&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>wndsz (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>wndsz</td></tr><tr><th>Description:</th><td>Size of the socket send and receive buffer in bytes.
+        <table><tbody><tr><th>Name:</th><td>wndsz</td></tr><tr><th>Description:</th><td width="500">Size of the socket send and receive buffer in bytes.
 This parameter is used to set SO_SNDBUF, SO_RCVBUF flags using setsocktopt()</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details></td></tr>
 </tbody></table>
         </details><details><summary>ConnectFlowOp (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>count (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td>The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td width="500">The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>engine (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>engine</td></tr><tr><th>Description:</th><td>The SSL Engine used by OpenSSL</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>engine</td></tr><tr><th>Description:</th><td width="500">The SSL Engine used by OpenSSL</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>port (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>port</td></tr><tr><th>Description:</th><td>The port used to establish the connection used by the FlowOp. This is not the same as the comm_port.
+        <table><tbody><tr><th>Name:</th><td>port</td></tr><tr><th>Description:</th><td width="500">The port used to establish the connection used by the FlowOp. This is not the same as the comm_port.
 When set to None, UPerf dynamically sets the port.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>protocol (<code>enum[string]</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>protocol</td></tr><tr><th>Description:</th><td>The protocol used to connect to the remote host.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;tcp&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
+        <table><tbody><tr><th>Name:</th><td>protocol</td></tr><tr><th>Description:</th><td width="500">The protocol used to connect to the remote host.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;tcp&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
         <details><summary>Values</summary>
             <ul><li><strong><code>sctp</code>:</strong> SCTP</li><li><strong><code>ssl</code>:</strong> SSL</li><li><strong><code>tcp</code>:</strong> TCP</li><li><strong><code>udp</code>:</strong> UDP</li><li><strong><code>vsock</code>:</strong> VSOCK</li></ul>
         </details>
     </td>
 </tr></tbody></table>
         </details><details><summary>rate (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td>Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td width="500">Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>remotehost (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>remotehost</td></tr><tr><th>Description:</th><td>The remote host server that we need to connect or accept connection from</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;127.0.0.1&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>remotehost</td></tr><tr><th>Description:</th><td width="500">The remote host server that we need to connect or accept connection from</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;127.0.0.1&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>tcp_nodelay (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>tcp_nodelay</td></tr><tr><th>Description:</th><td>Sets the TCP_NODELAY socket option.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>tcp_nodelay</td></tr><tr><th>Description:</th><td width="500">Sets the TCP_NODELAY socket option.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>type (<code>string</code>)</summary>
         <table><tbody><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;connect&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>wndsz (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>wndsz</td></tr><tr><th>Description:</th><td>Size of the socket send and receive buffer in bytes.
+        <table><tbody><tr><th>Name:</th><td>wndsz</td></tr><tr><th>Description:</th><td width="500">Size of the socket send and receive buffer in bytes.
 This parameter is used to set SO_SNDBUF, SO_RCVBUF flags using setsocktopt()</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details></td></tr>
 </tbody></table>
         </details><details><summary>DisconnectFlowOp (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>conn (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>connection id</td></tr><tr><th>Description:</th><td>If you know the connection ID, you can specify which one to disconnect.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>connection id</td></tr><tr><th>Description:</th><td width="500">If you know the connection ID, you can specify which one to disconnect.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>count (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td>The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td width="500">The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>rate (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td>Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td width="500">Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>type (<code>string</code>)</summary>
         <table><tbody><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;disconnect&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
@@ -202,10 +202,10 @@ This parameter is used to set SO_SNDBUF, SO_RCVBUF flags using setsocktopt()</td
 </tbody></table>
         </details><details><summary>NOPFlowOp (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>count (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td>The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td width="500">The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>rate (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td>Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td width="500">Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>type (<code>string</code>)</summary>
         <table><tbody><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;NOP&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
@@ -213,29 +213,29 @@ This parameter is used to set SO_SNDBUF, SO_RCVBUF flags using setsocktopt()</td
 </tbody></table>
         </details><details><summary>Profile (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>comm_port (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>comm_port</td></tr><tr><th>Description:</th><td>The master communication port to connect to on the UPerf server. This is used for orchestrating communication with the server (slave).
+        <table><tbody><tr><th>Name:</th><td>comm_port</td></tr><tr><th>Description:</th><td width="500">The master communication port to connect to on the UPerf server. This is used for orchestrating communication with the server (slave).
 Must match the value specified in the server.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20000</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>groups (<code>list[<code>reference[ProfileGroup]</code>]</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>groups</td></tr><tr><th>Description:</th><td>A list of groups in the profile.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>list[<code>reference[ProfileGroup]</code>]</code></td><tr><td colspan="2">
+        <table><tbody><tr><th>Name:</th><td>groups</td></tr><tr><th>Description:</th><td width="500">A list of groups in the profile.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>list[<code>reference[ProfileGroup]</code>]</code></td><tr><td colspan="2">
     <details>
         <summary>List items</summary>
         <table><tbody><tr><th>Type:</th><td><code>reference[ProfileGroup]</code></td><tr><th>Referenced object:</th><td>ProfileGroup</td></tr></tbody></table>
     </details>
 </td></tr></tbody></table>
         </details><details><summary>name (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>name</td></tr><tr><th>Description:</th><td>The name you assign to the profile. Does not change the profile&#39;s behavior.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>name</td></tr><tr><th>Description:</th><td width="500">The name you assign to the profile. Does not change the profile&#39;s behavior.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details></td></tr>
 </tbody></table>
         </details><details><summary>ProfileGroup (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>nprocs (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>nprocs</td></tr><tr><th>Description:</th><td>The number of processes to run, with each process running a clone of the group</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>nprocs</td></tr><tr><th>Description:</th><td width="500">The number of processes to run, with each process running a clone of the group</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>nthreads (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>nthreads</td></tr><tr><th>Description:</th><td>The number of threads to run, with each thread running a clone of the group</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>nthreads</td></tr><tr><th>Description:</th><td width="500">The number of threads to run, with each thread running a clone of the group</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>transactions (<code>list[<code>reference[ProfileTransaction]</code>]</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>transactions</td></tr><tr><th>Description:</th><td>A list of transactions in the group</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>list[<code>reference[ProfileTransaction]</code>]</code></td><tr><td colspan="2">
+        <table><tbody><tr><th>Name:</th><td>transactions</td></tr><tr><th>Description:</th><td width="500">A list of transactions in the group</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>list[<code>reference[ProfileTransaction]</code>]</code></td><tr><td colspan="2">
     <details>
         <summary>List items</summary>
         <table><tbody><tr><th>Type:</th><td><code>reference[ProfileTransaction]</code></td><tr><th>Referenced object:</th><td>ProfileTransaction</td></tr></tbody></table>
@@ -245,9 +245,9 @@ Must match the value specified in the server.</td></tr><tr><th>Required:</th><td
 </tbody></table>
         </details><details><summary>ProfileTransaction (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>duration (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>duration</td></tr><tr><th>Description:</th><td>How long the items in the transaction run.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>duration</td></tr><tr><th>Description:</th><td width="500">How long the items in the transaction run.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>flowops (<code>list[<code>one of[string]</code>]</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>flowops</td></tr><tr><th>Description:</th><td>The flowop name for uperf.
+        <table><tbody><tr><th>Name:</th><td>flowops</td></tr><tr><th>Description:</th><td width="500">The flowop name for uperf.
 - connect: Specifies that a connection needs to be opened.
 - accept: Specifies that a connection needs to be accepted from the remote
 - disconnect: Disconnects from the existing connection.
@@ -265,39 +265,39 @@ Must match the value specified in the server.</td></tr><tr><th>Required:</th><td
     </details>
 </td></tr></tbody></table>
         </details><details><summary>iterations (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>iterations</td></tr><tr><th>Description:</th><td>The number of times the contents of the transaction will run.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>iterations</td></tr><tr><th>Description:</th><td width="500">The number of times the contents of the transaction will run.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>rate (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td>For limiting the rate. </td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td width="500">For limiting the rate. </td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details></td></tr>
 </tbody></table>
         </details><details><summary>ReadFlowOp (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>canfail (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>canfail</td></tr><tr><th>Description:</th><td>Indicates that a failure for this flowop will not cause uperf to abort. This is espcially useful in UDP where a packet drop does not constitue a fatal error. This can be also be used for example, to test a SYN flood attack (Threads connect() repeatedly ignoring errors).</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>canfail</td></tr><tr><th>Description:</th><td width="500">Indicates that a failure for this flowop will not cause uperf to abort. This is espcially useful in UDP where a packet drop does not constitue a fatal error. This can be also be used for example, to test a SYN flood attack (Threads connect() repeatedly ignoring errors).</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>conn (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>connection id</td></tr><tr><th>Description:</th><td>Every open connection is assigned a connection name.
+        <table><tbody><tr><th>Name:</th><td>connection id</td></tr><tr><th>Description:</th><td width="500">Every open connection is assigned a connection name.
  Currently, the name can be any valid integer, however, uperf could take a string in the future. conn identifies the connection to use with this flowop. This connection name is thread private.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>count (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td>The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td width="500">The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>non_blocking (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>non_blocking</td></tr><tr><th>Description:</th><td>Use non-blocking IO. The socket/file descriptor is set the NO_BLOCK flag.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>non_blocking</td></tr><tr><th>Description:</th><td width="500">Use non-blocking IO. The socket/file descriptor is set the NO_BLOCK flag.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>poll_timeout (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>poll_timeout</td></tr><tr><th>Description:</th><td>If this option is set, the thread will first poll for specified duration before trying to carry out the operation. A poll timeout is returned as an error back to uperf.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>poll_timeout</td></tr><tr><th>Description:</th><td width="500">If this option is set, the thread will first poll for specified duration before trying to carry out the operation. A poll timeout is returned as an error back to uperf.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>randsize_max (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>randsize_max</td></tr><tr><th>Description:</th><td>For when a random message size is desired, this sets the max random value, and the size parameter sets the minimum. Unit: bytes.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+        <table><tbody><tr><th>Name:</th><td>randsize_max</td></tr><tr><th>Description:</th><td width="500">For when a random message size is desired, this sets the max random value, and the size parameter sets the minimum. Unit: bytes.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>rate (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td>Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td width="500">Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>rsize (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>rsize</td></tr><tr><th>Description:</th><td>Receive size in bytes.
+        <table><tbody><tr><th>Name:</th><td>rsize</td></tr><tr><th>Description:</th><td width="500">Receive size in bytes.
 For use with asymmetrical messages. For more contect, see description for &#34;size&#34; </td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>size (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>size</td></tr><tr><th>Description:</th><td>Unit: bytes
+        <table><tbody><tr><th>Name:</th><td>size</td></tr><tr><th>Description:</th><td width="500">Unit: bytes
 Amount of data that is either read or written. Uperf supports exchange of:
  - Fixed size messages
  - Asymmetrical size messages
@@ -310,30 +310,30 @@ For fixed size messages, the client and all servers used a sized fixed size for 
 </tbody></table>
         </details><details><summary>RecvFlowOp (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>canfail (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>canfail</td></tr><tr><th>Description:</th><td>Indicates that a failure for this flowop will not cause uperf to abort. This is espcially useful in UDP where a packet drop does not constitue a fatal error. This can be also be used for example, to test a SYN flood attack (Threads connect() repeatedly ignoring errors).</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>canfail</td></tr><tr><th>Description:</th><td width="500">Indicates that a failure for this flowop will not cause uperf to abort. This is espcially useful in UDP where a packet drop does not constitue a fatal error. This can be also be used for example, to test a SYN flood attack (Threads connect() repeatedly ignoring errors).</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>conn (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>connection id</td></tr><tr><th>Description:</th><td>Every open connection is assigned a connection name.
+        <table><tbody><tr><th>Name:</th><td>connection id</td></tr><tr><th>Description:</th><td width="500">Every open connection is assigned a connection name.
  Currently, the name can be any valid integer, however, uperf could take a string in the future. conn identifies the connection to use with this flowop. This connection name is thread private.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>count (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td>The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td width="500">The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>non_blocking (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>non_blocking</td></tr><tr><th>Description:</th><td>Use non-blocking IO. The socket/file descriptor is set the NO_BLOCK flag.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>non_blocking</td></tr><tr><th>Description:</th><td width="500">Use non-blocking IO. The socket/file descriptor is set the NO_BLOCK flag.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>poll_timeout (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>poll_timeout</td></tr><tr><th>Description:</th><td>If this option is set, the thread will first poll for specified duration before trying to carry out the operation. A poll timeout is returned as an error back to uperf.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>poll_timeout</td></tr><tr><th>Description:</th><td width="500">If this option is set, the thread will first poll for specified duration before trying to carry out the operation. A poll timeout is returned as an error back to uperf.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>randsize_max (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>randsize_max</td></tr><tr><th>Description:</th><td>For when a random message size is desired, this sets the max random value, and the size parameter sets the minimum. Unit: bytes.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+        <table><tbody><tr><th>Name:</th><td>randsize_max</td></tr><tr><th>Description:</th><td width="500">For when a random message size is desired, this sets the max random value, and the size parameter sets the minimum. Unit: bytes.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>rate (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td>Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td width="500">Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>rsize (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>rsize</td></tr><tr><th>Description:</th><td>Receive size in bytes.
+        <table><tbody><tr><th>Name:</th><td>rsize</td></tr><tr><th>Description:</th><td width="500">Receive size in bytes.
 For use with asymmetrical messages. For more contect, see description for &#34;size&#34; </td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>size (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>size</td></tr><tr><th>Description:</th><td>Unit: bytes
+        <table><tbody><tr><th>Name:</th><td>size</td></tr><tr><th>Description:</th><td width="500">Unit: bytes
 Amount of data that is either read or written. Uperf supports exchange of:
  - Fixed size messages
  - Asymmetrical size messages
@@ -346,18 +346,18 @@ For fixed size messages, the client and all servers used a sized fixed size for 
 </tbody></table>
         </details><details><summary>SendFileFlowOp (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>count (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td>The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td width="500">The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>dir (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>dir</td></tr><tr><th>Description:</th><td>This parameter identifies the directory from which the files will  be transferred. The directory is search recursively to generate a list of all readable files. Example: dir=/space</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;./files&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>dir</td></tr><tr><th>Description:</th><td width="500">This parameter identifies the directory from which the files will  be transferred. The directory is search recursively to generate a list of all readable files. Example: dir=/space</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;./files&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>nfiles (<code>int</code>)</summary>
-        <table><tbody><tr><th>Description:</th><td>This parameter identifies the number of files that will be transferred with each call to sendfilev(3EXT). This is used as the 3rd argument to the sendfilev(3EXT). nfiles is assumed to be 1 for the sendfile  flowop function. Example: nfiles=10</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>1</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Description:</th><td width="500">This parameter identifies the number of files that will be transferred with each call to sendfilev(3EXT). This is used as the 3rd argument to the sendfilev(3EXT). nfiles is assumed to be 1 for the sendfile  flowop function. Example: nfiles=10</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>1</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>rate (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td>Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td width="500">Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>size (<code>int</code>)</summary>
-        <table><tbody><tr><th>Description:</th><td>This parameter identifies the chunk size for the transfer. Instead of sending the whole file, uperf will send size sized chunks one at a time. This is used only if nfiles=1. Unit: bytes</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Description:</th><td width="500">This parameter identifies the chunk size for the transfer. Instead of sending the whole file, uperf will send size sized chunks one at a time. This is used only if nfiles=1. Unit: bytes</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>type (<code>string</code>)</summary>
         <table><tbody><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;sendfile&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
@@ -365,18 +365,18 @@ For fixed size messages, the client and all servers used a sized fixed size for 
 </tbody></table>
         </details><details><summary>SendFileVFlowOp (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>count (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td>The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td width="500">The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>dir (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>dir</td></tr><tr><th>Description:</th><td>This parameter identifies the directory from which the files will  be transferred. The directory is search recursively to generate a list of all readable files. Example: dir=/space</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;./files&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>dir</td></tr><tr><th>Description:</th><td width="500">This parameter identifies the directory from which the files will  be transferred. The directory is search recursively to generate a list of all readable files. Example: dir=/space</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;./files&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>nfiles (<code>int</code>)</summary>
-        <table><tbody><tr><th>Description:</th><td>This parameter identifies the number of files that will be transferred with each call to sendfilev(3EXT). This is used as the 3rd argument to the sendfilev(3EXT). nfiles is assumed to be 1 for the sendfile  flowop function. Example: nfiles=10</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>1</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Description:</th><td width="500">This parameter identifies the number of files that will be transferred with each call to sendfilev(3EXT). This is used as the 3rd argument to the sendfilev(3EXT). nfiles is assumed to be 1 for the sendfile  flowop function. Example: nfiles=10</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>1</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>rate (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td>Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td width="500">Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>size (<code>int</code>)</summary>
-        <table><tbody><tr><th>Description:</th><td>This parameter identifies the chunk size for the transfer. Instead of sending the whole file, uperf will send size sized chunks one at a time. This is used only if nfiles=1. Unit: bytes</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Description:</th><td width="500">This parameter identifies the chunk size for the transfer. Instead of sending the whole file, uperf will send size sized chunks one at a time. This is used only if nfiles=1. Unit: bytes</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>type (<code>string</code>)</summary>
         <table><tbody><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;sendfilev&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
@@ -384,30 +384,30 @@ For fixed size messages, the client and all servers used a sized fixed size for 
 </tbody></table>
         </details><details><summary>SendtoFlowOp (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>canfail (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>canfail</td></tr><tr><th>Description:</th><td>Indicates that a failure for this flowop will not cause uperf to abort. This is espcially useful in UDP where a packet drop does not constitue a fatal error. This can be also be used for example, to test a SYN flood attack (Threads connect() repeatedly ignoring errors).</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>canfail</td></tr><tr><th>Description:</th><td width="500">Indicates that a failure for this flowop will not cause uperf to abort. This is espcially useful in UDP where a packet drop does not constitue a fatal error. This can be also be used for example, to test a SYN flood attack (Threads connect() repeatedly ignoring errors).</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>conn (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>connection id</td></tr><tr><th>Description:</th><td>Every open connection is assigned a connection name.
+        <table><tbody><tr><th>Name:</th><td>connection id</td></tr><tr><th>Description:</th><td width="500">Every open connection is assigned a connection name.
  Currently, the name can be any valid integer, however, uperf could take a string in the future. conn identifies the connection to use with this flowop. This connection name is thread private.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>count (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td>The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td width="500">The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>non_blocking (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>non_blocking</td></tr><tr><th>Description:</th><td>Use non-blocking IO. The socket/file descriptor is set the NO_BLOCK flag.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>non_blocking</td></tr><tr><th>Description:</th><td width="500">Use non-blocking IO. The socket/file descriptor is set the NO_BLOCK flag.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>poll_timeout (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>poll_timeout</td></tr><tr><th>Description:</th><td>If this option is set, the thread will first poll for specified duration before trying to carry out the operation. A poll timeout is returned as an error back to uperf.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>poll_timeout</td></tr><tr><th>Description:</th><td width="500">If this option is set, the thread will first poll for specified duration before trying to carry out the operation. A poll timeout is returned as an error back to uperf.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>randsize_max (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>randsize_max</td></tr><tr><th>Description:</th><td>For when a random message size is desired, this sets the max random value, and the size parameter sets the minimum. Unit: bytes.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+        <table><tbody><tr><th>Name:</th><td>randsize_max</td></tr><tr><th>Description:</th><td width="500">For when a random message size is desired, this sets the max random value, and the size parameter sets the minimum. Unit: bytes.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>rate (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td>Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td width="500">Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>rsize (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>rsize</td></tr><tr><th>Description:</th><td>Receive size in bytes.
+        <table><tbody><tr><th>Name:</th><td>rsize</td></tr><tr><th>Description:</th><td width="500">Receive size in bytes.
 For use with asymmetrical messages. For more contect, see description for &#34;size&#34; </td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>size (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>size</td></tr><tr><th>Description:</th><td>Unit: bytes
+        <table><tbody><tr><th>Name:</th><td>size</td></tr><tr><th>Description:</th><td width="500">Unit: bytes
 Amount of data that is either read or written. Uperf supports exchange of:
  - Fixed size messages
  - Asymmetrical size messages
@@ -420,15 +420,15 @@ For fixed size messages, the client and all servers used a sized fixed size for 
 </tbody></table>
         </details><details><summary>ThinkFlowOp (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>count (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td>The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td width="500">The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>duration (<code>string</code>)</summary>
         <table><tbody><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>rate (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td>Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td width="500">Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>think_type (<code>enum[string]</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>Think Type</td></tr><tr><th>Description:</th><td>The type of think type, either idle, whichsleeps the CPU threads, or busy, which uses CPU time.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;idle&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
+        <table><tbody><tr><th>Name:</th><td>Think Type</td></tr><tr><th>Description:</th><td width="500">The type of think type, either idle, whichsleeps the CPU threads, or busy, which uses CPU time.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>&#34;idle&#34;</code></pre></td></tr><tr><th>Type:</th><td><code>enum[string]</code></td><tr><td colspan="2">
         <details><summary>Values</summary>
             <ul><li><strong><code>busy</code>:</strong> BUSY</li><li><strong><code>idle</code>:</strong> IDLE</li></ul>
         </details>
@@ -440,30 +440,30 @@ For fixed size messages, the client and all servers used a sized fixed size for 
 </tbody></table>
         </details><details><summary>WriteFlowOp (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>canfail (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>canfail</td></tr><tr><th>Description:</th><td>Indicates that a failure for this flowop will not cause uperf to abort. This is espcially useful in UDP where a packet drop does not constitue a fatal error. This can be also be used for example, to test a SYN flood attack (Threads connect() repeatedly ignoring errors).</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>canfail</td></tr><tr><th>Description:</th><td width="500">Indicates that a failure for this flowop will not cause uperf to abort. This is espcially useful in UDP where a packet drop does not constitue a fatal error. This can be also be used for example, to test a SYN flood attack (Threads connect() repeatedly ignoring errors).</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>conn (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>connection id</td></tr><tr><th>Description:</th><td>Every open connection is assigned a connection name.
+        <table><tbody><tr><th>Name:</th><td>connection id</td></tr><tr><th>Description:</th><td width="500">Every open connection is assigned a connection name.
  Currently, the name can be any valid integer, however, uperf could take a string in the future. conn identifies the connection to use with this flowop. This connection name is thread private.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>count (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td>The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>count</td></tr><tr><th>Description:</th><td width="500">The number of times this flowop will be executed.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>non_blocking (<code>bool</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>non_blocking</td></tr><tr><th>Description:</th><td>Use non-blocking IO. The socket/file descriptor is set the NO_BLOCK flag.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>non_blocking</td></tr><tr><th>Description:</th><td width="500">Use non-blocking IO. The socket/file descriptor is set the NO_BLOCK flag.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>false</code></pre></td></tr><tr><th>Type:</th><td><code>bool</code></td></tbody></table>
         </details><details><summary>poll_timeout (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>poll_timeout</td></tr><tr><th>Description:</th><td>If this option is set, the thread will first poll for specified duration before trying to carry out the operation. A poll timeout is returned as an error back to uperf.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        <table><tbody><tr><th>Name:</th><td>poll_timeout</td></tr><tr><th>Description:</th><td width="500">If this option is set, the thread will first poll for specified duration before trying to carry out the operation. A poll timeout is returned as an error back to uperf.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
         </details><details><summary>randsize_max (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>randsize_max</td></tr><tr><th>Description:</th><td>For when a random message size is desired, this sets the max random value, and the size parameter sets the minimum. Unit: bytes.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
+        <table><tbody><tr><th>Name:</th><td>randsize_max</td></tr><tr><th>Description:</th><td width="500">For when a random message size is desired, this sets the max random value, and the size parameter sets the minimum. Unit: bytes.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>rate (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td>Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>rate</td></tr><tr><th>Description:</th><td width="500">Experimental: This option causes uperf to execute this flowop at the specified rate for iterations or duration seconds.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>rsize (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>rsize</td></tr><tr><th>Description:</th><td>Receive size in bytes.
+        <table><tbody><tr><th>Name:</th><td>rsize</td></tr><tr><th>Description:</th><td width="500">Receive size in bytes.
 For use with asymmetrical messages. For more contect, see description for &#34;size&#34; </td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Type:</th><td><code>int</code></td><tr><th>Units:</th><td>bytes</td></tr>
 </tbody></table>
         </details><details><summary>size (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>size</td></tr><tr><th>Description:</th><td>Unit: bytes
+        <table><tbody><tr><th>Name:</th><td>size</td></tr><tr><th>Description:</th><td width="500">Unit: bytes
 Amount of data that is either read or written. Uperf supports exchange of:
  - Fixed size messages
  - Asymmetrical size messages
@@ -500,10 +500,10 @@ For fixed size messages, the client and all servers used a sized fixed size for 
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>UPerfResults</td></tr>
 <tr><th>Properties</th><td><details><summary>profile_name (<code>string</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>profile_name</td></tr><tr><th>Description:</th><td>The name of the profile that was run.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
-            </details><details><summary>timeseries_data (<code>map[<code>int</code>, <code>map[<code>int</code>, <code>reference[UPerfRawData]</code>]</code>]</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>timeseries_data</td></tr><tr><th>Description:</th><td>Map of the transaction ID to a map of timestamp to UPerfRawData.
-This result varies by input profile, due to it correlating to the transactions in the profile. It ignores zero initial results.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>map[<code>int</code>, <code>map[<code>int</code>, <code>reference[UPerfRawData]</code>]</code>]</code></td><tr><td colspan="2">
+                <table><tbody><tr><th>Name:</th><td>profile_name</td></tr><tr><th>Description:</th><td width="500">The name of the profile that was run.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+            </details><details><summary>timeseries_data (<code>map[<code>int</code>,<code>map[<code>int</code>,<code>reference[UPerfRawData]</code>]</code>]</code>)</summary>
+                <table><tbody><tr><th>Name:</th><td>timeseries_data</td></tr><tr><th>Description:</th><td width="500">Map of the transaction ID to a map of timestamp to UPerfRawData.
+This result varies by input profile, due to it correlating to the transactions in the profile. It ignores zero initial results.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>map[<code>int</code>,<code>map[<code>int</code>,<code>reference[UPerfRawData]</code>]</code>]</code></td><tr><td colspan="2">
     <details>
         <summary>Key type</summary>
         <table><tbody><tr><th>Type:</th><td><code>int</code></td>
@@ -513,7 +513,7 @@ This result varies by input profile, due to it correlating to the transactions i
 <tr><td colspan="2">
     <details>
         <summary>Value type</summary>
-        <table><tbody><tr><th>Type:</th><td><code>map[<code>int</code>, <code>reference[UPerfRawData]</code>]</code></td><tr><td colspan="2">
+        <table><tbody><tr><th>Type:</th><td><code>map[<code>int</code>,<code>reference[UPerfRawData]</code>]</code></td><tr><td colspan="2">
     <details>
         <summary>Key type</summary>
         <table><tbody><tr><th>Type:</th><td><code>int</code></td>
@@ -545,10 +545,10 @@ This result varies by input profile, due to it correlating to the transactions i
 </tbody></table>
         </details><details><summary>UPerfResults (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>profile_name (<code>string</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>profile_name</td></tr><tr><th>Description:</th><td>The name of the profile that was run.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
-        </details><details><summary>timeseries_data (<code>map[<code>int</code>, <code>map[<code>int</code>, <code>reference[UPerfRawData]</code>]</code>]</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>timeseries_data</td></tr><tr><th>Description:</th><td>Map of the transaction ID to a map of timestamp to UPerfRawData.
-This result varies by input profile, due to it correlating to the transactions in the profile. It ignores zero initial results.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>map[<code>int</code>, <code>map[<code>int</code>, <code>reference[UPerfRawData]</code>]</code>]</code></td><tr><td colspan="2">
+        <table><tbody><tr><th>Name:</th><td>profile_name</td></tr><tr><th>Description:</th><td width="500">The name of the profile that was run.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>string</code></td></tbody></table>
+        </details><details><summary>timeseries_data (<code>map[<code>int</code>,<code>map[<code>int</code>,<code>reference[UPerfRawData]</code>]</code>]</code>)</summary>
+        <table><tbody><tr><th>Name:</th><td>timeseries_data</td></tr><tr><th>Description:</th><td width="500">Map of the transaction ID to a map of timestamp to UPerfRawData.
+This result varies by input profile, due to it correlating to the transactions in the profile. It ignores zero initial results.</td></tr><tr><th>Required:</th><td>Yes</td></tr><tr><th>Type:</th><td><code>map[<code>int</code>,<code>map[<code>int</code>,<code>reference[UPerfRawData]</code>]</code>]</code></td><tr><td colspan="2">
     <details>
         <summary>Key type</summary>
         <table><tbody><tr><th>Type:</th><td><code>int</code></td>
@@ -558,7 +558,7 @@ This result varies by input profile, due to it correlating to the transactions i
 <tr><td colspan="2">
     <details>
         <summary>Value type</summary>
-        <table><tbody><tr><th>Type:</th><td><code>map[<code>int</code>, <code>reference[UPerfRawData]</code>]</code></td><tr><td colspan="2">
+        <table><tbody><tr><th>Type:</th><td><code>map[<code>int</code>,<code>reference[UPerfRawData]</code>]</code></td><tr><td colspan="2">
     <details>
         <summary>Key type</summary>
         <table><tbody><tr><th>Type:</th><td><code>int</code></td>
@@ -591,20 +591,20 @@ Runs the passive UPerf server to allow benchmarks between the client and this se
 <table><tbody>
 <tr><th>Type:</th><td><code>scope</code></td><tr><th>Root object:</th><td>UPerfServerParams</td></tr>
 <tr><th>Properties</th><td><details><summary>comm_port (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>comm_port</td></tr><tr><th>Description:</th><td>The master communication port to open for this UPerf server. This is used for orchestrating communication between the UPerf server (slave) and the UPerf client (master).
+                <table><tbody><tr><th>Name:</th><td>comm_port</td></tr><tr><th>Description:</th><td width="500">The master communication port to open for this UPerf server. This is used for orchestrating communication between the UPerf server (slave) and the UPerf client (master).
 Must match the value specified in the client.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20000</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details><details><summary>run_duration (<code>int</code>)</summary>
-                <table><tbody><tr><th>Name:</th><td>run_duration</td></tr><tr><th>Description:</th><td>How long the UPerf server should run before terminating. 0 for indefinite.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>60</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+                <table><tbody><tr><th>Name:</th><td>run_duration</td></tr><tr><th>Description:</th><td width="500">How long the UPerf server should run before terminating. 0 for indefinite.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>60</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
             </details></td></tr>
 <tr><td colspan="2"><details><summary><strong>Objects</strong></summary><details><summary>UPerfServerParams (<code>object</code>)</summary>
             <table><tbody><tr><th>Type:</th><td><code>object</code></td><tr><th>Properties</th><td><details><summary>comm_port (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>comm_port</td></tr><tr><th>Description:</th><td>The master communication port to open for this UPerf server. This is used for orchestrating communication between the UPerf server (slave) and the UPerf client (master).
+        <table><tbody><tr><th>Name:</th><td>comm_port</td></tr><tr><th>Description:</th><td width="500">The master communication port to open for this UPerf server. This is used for orchestrating communication between the UPerf server (slave) and the UPerf client (master).
 Must match the value specified in the client.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>20000</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details><details><summary>run_duration (<code>int</code>)</summary>
-        <table><tbody><tr><th>Name:</th><td>run_duration</td></tr><tr><th>Description:</th><td>How long the UPerf server should run before terminating. 0 for indefinite.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>60</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
+        <table><tbody><tr><th>Name:</th><td>run_duration</td></tr><tr><th>Description:</th><td width="500">How long the UPerf server should run before terminating. 0 for indefinite.</td></tr><tr><th>Required:</th><td>No</td></tr><tr><th>Default (JSON encoded):</th><td><pre><code>60</code></pre></td></tr><tr><th>Type:</th><td><code>int</code></td>
 </tbody></table>
         </details></td></tr>
 </tbody></table>
