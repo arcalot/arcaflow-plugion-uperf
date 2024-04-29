@@ -238,7 +238,7 @@ def run_uperf(
 
     # Debug output
     print(outs.decode("utf-8"))
-
+    print('robotz rule')
     return process_output(outs)
 
 
