@@ -3,7 +3,7 @@ ARG package=arcaflow_plugin_uperf
 # STAGE 1 -- Build module dependencies and run tests
 # The 'poetry' and 'coverage' modules are installed and verson-controlled in the
 # quay.io/arcalot/arcaflow-plugin-baseimage-python-buildbase image to limit drift
-FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-buildbase:0.4.0@sha256:26f5d506f0750e0cad636afbe7ddd8cade09937eb5abae784096e46a1d4ae030 as build
+FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-buildbase:0.4.0 as build
 ARG package
 RUN dnf -y install lksctp-tools-devel && dnf clean all \
  && dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm \
@@ -28,7 +28,7 @@ RUN python -m coverage run tests/test_${package}.py \
 
 
 # STAGE 2 -- Build final plugin image
-FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-osbase:0.4.0@sha256:6674b5d2aa5de565b1d39a9c1694ad7ca15b57d06f33529bc3a6f4d6e76b100e
+FROM quay.io/arcalot/arcaflow-plugin-baseimage-python-osbase:0.4.0
 ARG package
 RUN dnf -y install lksctp-tools-devel && dnf clean all \
  && dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm \
