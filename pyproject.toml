@@ -13,7 +13,7 @@ arcaflow-plugin-sdk = "^0.14.0"
 
 
 [tool.poetry.dev-dependencies]
-black = "^24.0.0"
+black = "^25.0.0"
 autoflake = "^2.0.0"
 pydocstyle = "^6.1.1"
 
